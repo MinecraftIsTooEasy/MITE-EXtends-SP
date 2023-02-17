@@ -167,6 +167,7 @@ public class Configs {
         //public static ConfigItem <Boolean> isActiveSecondaryAttribute = new ConfigItem("isActiveSecondaryAttribute", false, "是否开启副属性升级");
         public static ConfigItem <Boolean> BlnFinsh = new ConfigItem("BlnFinsh", false, "是否开启急速钓鱼");
         public static ConfigItem <Boolean> downPigZombieAttackDamage = new ConfigItem("downPigZombieAttackDamage", false, "是否降低猪人攻击力成长");
+        public static ConfigItem <Boolean> isActiveSecondaryAttribute = new ConfigItem("isActiveSecondaryAttribute", false, "是否开启副属性");
 //        public static ConfigItem <String> md5String = new ConfigItem("md5String", new lh("wensc").a("busy"), "MD5");
 
     }
@@ -174,6 +175,7 @@ public class Configs {
     public static void loadConfigs(){
         wenscMap.put("BlnFinsh", wenscConfig.BlnFinsh);
         wenscMap.put("downPigZombieAttackDamage", wenscConfig.downPigZombieAttackDamage);
+        wenscMap.put("isActiveSecondaryAttribute", wenscConfig.isActiveSecondaryAttribute);
 
         wenscMap.put("BlnGravel", wenscConfig.BlnGravel);
         wenscMap.put("isOpenStrongBoxBreakRecord", wenscConfig.isOpenStrongBoxBreakRecord);

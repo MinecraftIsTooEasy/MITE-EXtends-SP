@@ -85,7 +85,7 @@ public abstract class ItemTrans {
    }
 
    public void addExpForTool(ItemStack stack, EntityPlayer player, int exp) {
-      //if(Configs.wenscConfig.isActiveSecondaryAttribute.ConfigValue) {
+      if(Configs.wenscConfig.isActiveSecondaryAttribute.ConfigValue) {
          stack.fixNBT();
          NBTTagCompound tagCompound = stack.stackTagCompound;
          if (tagCompound != null) {
@@ -107,13 +107,14 @@ public abstract class ItemTrans {
 
                      this.onItemLevelUp(tagCompound, player, stack);
                   }
-               //}
+                  //}
+               }
+            } else {
+               NBTTagCompound compound = new NBTTagCompound();
+               compound.setInteger("tool_exp", 0);
+               compound.setInteger("tool_level", 0);
+               stack.stackTagCompound = compound;
             }
-         } else {
-            NBTTagCompound compound = new NBTTagCompound();
-            compound.setInteger("tool_exp", 0);
-            compound.setInteger("tool_level", 0);
-            stack.stackTagCompound = compound;
          }
       }
    }
