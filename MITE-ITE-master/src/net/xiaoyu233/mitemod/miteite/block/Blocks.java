@@ -221,7 +221,7 @@ public class Blocks extends Block{
                 'W',Block.planks,
                 'A',Block.anvil,
                 'I', Items.ingotIron,
-                'T',new ItemStack(Block.workbench,1,7),
+                'T',new ItemStack(Block.workbench,1,6),
                 'O',Blocks.obsidian);
         register.registerShapedRecipe(new ItemStack(Blocks.chestVibranium), true,
                 "III",

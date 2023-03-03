@@ -1,6 +1,7 @@
 package net.xiaoyu233.mitemod.miteite.block;
 
 import net.minecraft.*;
+
 public class BlockSpawn extends Block {
     BlockSpawn(int par1, Material material) {
         super(par1, material, (new BlockConstants()).setNeverHidesAdjacentFaces().setNotAlwaysLegal());
@@ -26,6 +27,7 @@ public class BlockSpawn extends Block {
         if (entityPlayer != null && entityPlayer.spawnStoneWorldId != -999) {
             if (info.x == entityPlayer.spawnStoneX && info.y == (entityPlayer.spawnStoneY - 1) && info.z == entityPlayer.spawnStoneZ) {
                 entityPlayer.spawnStoneWorldId = -999;
+                entityPlayer.addChatMessage("已经取消复活传送阵");
                 return this.dropBlockAsEntityItem(info, this.createStackedBlock(info.getMetadata()));
             } else {
                 return 0;
@@ -40,6 +42,7 @@ public class BlockSpawn extends Block {
         if (entityPlayer != null && entityPlayer.spawnStoneWorldId != -999) {
             if (info.x == entityPlayer.spawnStoneX && info.y == (entityPlayer.spawnStoneY - 1) && info.z == entityPlayer.spawnStoneZ) {
                 entityPlayer.spawnStoneWorldId = -999;
+                entityPlayer.addChatMessage("已经取消复活传送阵");
                 return super.dropBlockAsEntityItem(info);
             } else {
                 return 0;
@@ -77,21 +80,43 @@ public class BlockSpawn extends Block {
 //        }
 //    }
 
+//    @Override
+//    public boolean onBlockPlacedMITE(World world, int x, int y, int z, int metadata, Entity placer, boolean test_only) {
+//        if(world.isWorldServer()) {
+//            EntityPlayer entityPlayer = (EntityPlayer) placer;
+//            if(entityPlayer != null) {
+//                if(entityPlayer.spawnStoneWorldId == -999) {
+//                    entityPlayer.spawnStoneX = x;
+//                    entityPlayer.spawnStoneY = y + 1;
+//                    entityPlayer.spawnStoneZ = z;
+//                    entityPlayer.setSpawnStoneWorldId(world.provider.dimensionId);
+//                } else {
+//                    entityPlayer.addChatMessage("已经放置复活传送阵，请勿重复放置");
+//                    return false;
+//                }
+//            }
+//        }
+//        return super.onBlockPlacedMITE(world, x, y, z, metadata, placer, test_only);
+//    }
+
+
     public boolean tryPlaceBlock(World world, int x, int y, int z, EnumFace face, int metadata, Entity placer, boolean perform_placement_check, boolean drop_existing_block, boolean test_only) {
+        boolean isSuccess = super.tryPlaceBlock(world, x, y, z, face, metadata, placer, perform_placement_check, drop_existing_block, test_only);
         if(!world.isRemote) {
             EntityPlayer entityPlayer = (EntityPlayer) placer;
-            if(entityPlayer != null) {
+            if(entityPlayer != null && isSuccess && world.getBlock(x, y, z).blockID == Blocks.blockSpawn.blockID) {
                 if(entityPlayer.spawnStoneWorldId == -999) {
                     entityPlayer.spawnStoneX = x;
                     entityPlayer.spawnStoneY = y + 1;
                     entityPlayer.spawnStoneZ = z;
                     entityPlayer.setSpawnStoneWorldId(world.provider.dimensionId);
+                    entityPlayer.addChatMessage("复活传送阵已生效");
                 } else {
                     entityPlayer.addChatMessage("已经放置复活传送阵，请勿重复放置");
                     return false;
                 }
             }
         }
-        return super.tryPlaceBlock(world, x, y, z, face, metadata, placer, perform_placement_check, drop_existing_block, test_only);
+        return isSuccess;
     }
 }

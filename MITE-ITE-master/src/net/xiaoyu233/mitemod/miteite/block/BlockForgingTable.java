@@ -117,8 +117,8 @@ public class BlockForgingTable extends Block implements IContainer,IBlockWithSub
             if (player.onServer()) {
                 TileEntityForgingTable tile_entity = (TileEntityForgingTable)world.getBlockTileEntity(x, y, z);
                 if (tile_entity != null && !tile_entity.isUsing()) {
-                   // player.displayGUIForgingTable(x, y, z,tile_entity.getSlots());
-                    System.out.println("打印111");
+                    player.displayGUIForgingTable(x, y, z,tile_entity.getSlots());
+                    //System.out.println("打印111");
                 }else {
                     return false;
                 }

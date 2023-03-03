@@ -71,7 +71,7 @@ public abstract class ClientPlayerTrans extends beu {
          Material material_to_check_tool_bench_hardness_against = recipe == null ? item.getHardestMetalMaterial() : recipe.getMaterialToCheckToolBenchHardnessAgainst();
          Material tool_material = BlockWorkbench.getToolMaterial(container_workbench.getBlockMetadata());
          if (material_to_check_tool_bench_hardness_against == null) {
-            return tool_material == Materials.vibranium ? 3.4028235E38F : 0.2F;
+            return tool_material == Materials.vibranium ? 3.4028235E38F : (tool_material == Materials.infinity ? 3.4028235E38F : 0.2F);
          } else if (tool_material != Material.flint && tool_material != Material.obsidian) {
             if (tool_material != Material.copper && tool_material != Material.silver && tool_material != Material.gold) {
                if (tool_material == Material.iron) {
@@ -82,7 +82,7 @@ public abstract class ClientPlayerTrans extends beu {
                   return 0.6F;
                } else if (tool_material == Material.adamantium) {
                   return 0.7F;
-               } else if (tool_material == Materials.vibranium) {
+               } else if (tool_material == Materials.vibranium || tool_material == Materials.infinity) {
                   return 3.4028235E38F;
                } else {
                   Minecraft.setErrorMessage("getBenchAndToolsModifier: unrecognized tool material " + tool_material);

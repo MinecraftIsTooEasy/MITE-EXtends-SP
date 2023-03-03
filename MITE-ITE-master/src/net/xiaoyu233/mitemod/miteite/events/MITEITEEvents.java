@@ -408,10 +408,13 @@ public class MITEITEEvents {
 //    }
     @Subscribe
     public void onPlayerLoggedIn(PlayerLoggedInEvent event) {
-        EntityPlayer player = event.getPlayer();
-        player.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE).appendComponent(ChatMessage.createFromTranslationKey("MITE-EXtends由 ").appendComponent(ChatMessage.createFromTranslationKey("lee").setColor(EnumChatFormat.WHITE))).addText(" 重写,版本:v1.2.0-pre3更新日志:").setColor(EnumChatFormat.DARK_AQUA).appendComponent(ChatMessage.createFromTranslationKey("https://lucklong.cn").setColor(EnumChatFormat.DARK_GREEN)));
-        if (player.isFirstLogin) {
-            player.isFirstLogin = false;
+        EntityPlayer par1EntityPlayerMP = event.getPlayer();
+        par1EntityPlayerMP.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE)
+                .appendComponent(ChatMessage.createFromTranslationKey("MITE-EXtends-SP" + Constant.MITE_ITE_VERSION +" 由 ")
+                        .appendComponent(ChatMessage.createFromTranslationKey("lee").setColor(EnumChatFormat.WHITE)))
+                .addText(" 重写").setColor(EnumChatFormat.DARK_AQUA));
+        if (par1EntityPlayerMP.isFirstLogin) {
+            par1EntityPlayerMP.isFirstLogin = false;
         }
 
     }

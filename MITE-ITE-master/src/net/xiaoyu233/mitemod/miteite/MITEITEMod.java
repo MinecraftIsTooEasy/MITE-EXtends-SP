@@ -19,7 +19,7 @@ import java.io.File;
 public class MITEITEMod extends AbstractMod {
     // jar -cvf mite-extreme-v0.0.4.jar .
     private static final int MOD_LOADER_MIN_VER_NUM = 100;
-    private static final String MOD_LOADER_MIN_VER_STRING = "v1.2.3-fix";
+    private static final String MOD_LOADER_MIN_VER_STRING = "v1.0.0";
     @Override
     public void preInit() {
 
