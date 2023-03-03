@@ -285,7 +285,7 @@ public class Items extends Item{
                 false,
                 "  X",
                 " SL",
-                "SNL",
+                "SZL",
                 'L', Item.silk,
                 'Z', VIBRANIUM_NUGGET,
                 'S', OBSIDIAN_STICK,
