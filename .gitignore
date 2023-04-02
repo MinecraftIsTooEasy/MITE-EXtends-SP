@@ -20,6 +20,6 @@
 *.rar
 .idea
 out
-MITE-ITE-master/MITE-ITE-master.iml
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+MITE-EXtends-SP
+libs
 hs_err_pid*
