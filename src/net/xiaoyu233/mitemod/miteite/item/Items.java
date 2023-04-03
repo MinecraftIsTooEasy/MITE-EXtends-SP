@@ -34,14 +34,11 @@ public class Items extends Item{
     public static final ItemEnhanceStone MITHRIL_ENHANCE_STONE = (ItemEnhanceStone) new ItemEnhanceStone(ItemEnhanceStone.Types.mithril).setCraftingDifficultyAsComponent(ItemRock.getCraftingDifficultyAsComponent(Material.mithril) * 2f);
     public static final ItemEnhanceStone ADAMANTIUM_ENHANCE_STONE = (ItemEnhanceStone) new ItemEnhanceStone(ItemEnhanceStone.Types.adamantium).setCraftingDifficultyAsComponent(ItemRock.getCraftingDifficultyAsComponent(Material.diamond) * 2f);
     public static final ItemEnhanceStone UNIVERSAL_ENHANCE_STONE = (ItemEnhanceStone) new ItemEnhanceStone(ItemEnhanceStone.Types.universal).setCraftingDifficultyAsComponent(ItemRock.getCraftingDifficultyAsComponent(Material.ender_pearl) * 2f);
-
     public static final Item lavaInPipes = new ItemLavaInPipes(Constant.getNextItemID(), Materials.lava);
-
     public static final Item clubIron = new ItemClubMetal(Constant.getNextItemID(), Material.iron);
     public static final Item clubMithril = new ItemClubMetal(Constant.getNextItemID(), Material.mithril);
     public static final Item clubAdamantium = new ItemClubMetal(Constant.getNextItemID(), Material.adamantium);
     public static final Item clubVibranium = new ItemClubMetal(Constant.getNextItemID(), Materials.vibranium);
-
     public static final Item ringKillerCopper = new ItemRingKiller(Constant.getNextItemID(), Materials.copper).setUnlocalizedName("ringKillerCopper");
     public static final Item ringKillerIron = new ItemRingKiller(Constant.getNextItemID(), Materials.iron).setUnlocalizedName("ringKillerIron");
     public static final Item ringKillerAncient = new ItemRingKiller(Constant.getNextItemID(), Materials.ancient_metal).setUnlocalizedName("ringKillerAncient");
@@ -50,7 +47,6 @@ public class Items extends Item{
     public static final Item ringKillerVibranium = new ItemRingKiller(Constant.getNextItemID(), Materials.vibranium).setUnlocalizedName("ringKillerVibranium");
     public static final Item ringKillerInfinity = new ItemRingKiller(Constant.getNextItemID(), Materials.infinity).setUnlocalizedName("ringKillerInfinity");
     public static final Item Stack_Torch = createInstance(Item.class, new Class[]{int.class, Material.class, String.class}, Constant.getNextItemID(), Material.circuits, "stack_torch");
-
     public static final Item voucherExchanger = new ItemMobVoucher(Constant.getNextItemID(), "exchanger");
     public static final Item voucherDoor = new ItemMobVoucher(Constant.getNextItemID(), "door");
     public static final Item voucherZombieLord = new ItemMobVoucher(Constant.getNextItemID(), "zombie_lord");
@@ -70,23 +66,22 @@ public class Items extends Item{
     public static final Item voucherGoldBodyCore = new ItemMobVoucher(Constant.getNextItemID(), "goldbody_core");
     public static final Item voucherSkeletonBoss = new ItemMobVoucher(Constant.getNextItemID(), "skeletonboss");
     public static final Item voucherUltimateAnnihilation = new ItemMobVoucher(Constant.getNextItemID(), "UltimateAnnihilation");
-    
-
     public static final Item endBook = new ItemEndBook(Constant.getNextItemID());
-    public static final ItemInfinitySword infinitysword = new ItemInfinitySword(Constant.getNextItemID());
-
-
-    public static final Item infinityingot = ReflectHelper.createInstance(ItemIngot.class, new Class[]{Integer.TYPE, Material.class}, new Object[]{Constant.getNextItemID(), Materials.infinity});
-    public static final ItemCoin coinVibranium = ReflectHelper.createInstance(ItemCoin.class, new Class[]{Integer.TYPE, Material.class}, new Object[]{Constant.getNextItemID(), Materials.vibranium});
+    public static final ItemInfinitySword infinitySword = new ItemInfinitySword(Constant.getNextItemID());
+    public static final Item infinityingot = ReflectHelper.createInstance(ItemIngot.class, new Class[]{Integer.TYPE, Material.class}, Constant.getNextItemID(), Materials.infinity);
+    public static final ItemCoin coinVibranium = ReflectHelper.createInstance(ItemCoin.class, new Class[]{Integer.TYPE, Material.class}, Constant.getNextItemID(), Materials.vibranium);
     public static final Item doorVibranium = new ItemDoor(Constant.getNextItemID(), Materials.vibranium);
     //public static final ItemMonsterEgg doorVibranium1 = new ItemDoor(Constant.getNextItemID(), Materials.vibranium);
    // public static final Item itemPadding = new ItemPadding(Constant.getNextItemID());
     public static final Item fishRodVibranium = new ItemFishingRod(Constant.getNextItemID(), Materials.vibranium);
     public static final ItemArmor unassailableChestPlate = new ItemCuirass(Constant.getNextItemID(), Materials.infinity, false);
-
     public static final Item clubCopper = new ItemClubMetal(Constant.getNextItemID(), Material.copper);
     public static final Item clubSilver = new ItemClubMetal(Constant.getNextItemID(),Material.silver);
-
+    public static final Item enchantIngot = createInstance(ItemIngot.class, new Class[]{Integer.TYPE, Material.class}, Constant.getNextItemID(), Materials.enchant);
+    public static final ItemNugget enchantNugget = createInstance(ItemNugget.class, new Class[]{int.class,Material.class},Constant.getNextItemID(), Materials.enchant);
+    public static final ItemPickaxe enchantPickaxe = createInstance(ItemPickaxe.class,new Class[]{int.class,Material.class},Constant.getNextItemID(), Materials.enchant);
+    public static final ItemSword enchantSword = createInstance(ItemSword.class,new Class[]{int.class,Material.class},Constant.getNextItemID(), Materials.enchant);
+    public static final Item enchantStick = createInstance(Item.class,new Class[]{int.class,Material.class,String.class},Constant.getNextItemID(), Materials.enchant, "enchant_stick");
 
     private static Item register(String resourceLocation, Item item, CreativeModeTab tab) {
         item.setResourceLocation(item.getResourceLocationPrefix() + resourceLocation);
@@ -230,12 +225,17 @@ public class Items extends Item{
         register("voucher/voucher_ultimateannihilation", voucherUltimateAnnihilation).setUnlocalizedName("voucher_ultimateannihilation").setLowestCraftingDifficultyToProduce(1.0F);
         register("voucher/voucher_skeletonboss", voucherSkeletonBoss).setUnlocalizedName("voucher_skeletonboss").setLowestCraftingDifficultyToProduce(1.0F);
         register("end_book", endBook, CreativeModeTab.tabTools);
-        register("infinity_sword", infinitysword);
+        register("infinity_sword", infinitySword);
         register("infinity_ingot", infinityingot);
         register("vibranium_coin", coinVibranium);
         register("vibranium_door", doorVibranium);
         register("fishing_rods/vibranium_fishrod", fishRodVibranium);
         register("unassailable_chestplate",unassailableChestPlate);
+        register("enchant_sword", enchantSword);
+        register("enchant_ingot", enchantIngot);
+        register("enchant_nugget", enchantNugget);
+        register("enchant_stick", enchantStick);
+        register("enchant_pickaxe", enchantPickaxe);
         //register("china_fu", chinaFu);
         //register("padding", itemPadding);
 
@@ -285,12 +285,15 @@ public class Items extends Item{
             register.registerShapedRecipe(new ItemStack(ringKillerMithril, 1), true, new Object[]{"###", "#*#","###", '#', Items.swordMithril , '*', Items.ringKillerAncient});
             register.registerShapedRecipe(new ItemStack(ringKillerAdamantium, 1), true, new Object[]{"###", "#*#","###", '#', Items.swordAdamantium , '*', Items.ringKillerMithril});
             register.registerShapedRecipe(new ItemStack(ringKillerVibranium, 1), true, new Object[]{"###", "#*#","###", '#', VIBRANIUM_SWORD , '*', Items.ringKillerAdamantium});
-            register.registerShapedRecipe(new ItemStack(ringKillerInfinity, 1), true, new Object[]{"###", "#*#","###", '#', infinitysword , '*', Items.ringKillerVibranium});
+            register.registerShapedRecipe(new ItemStack(ringKillerInfinity, 1), true, new Object[]{"###", "#*#","###", '#', infinitySword, '*', Items.ringKillerVibranium});
         }
 
         register.registerShapelessRecipe(new ItemStack(endBook), true, new Object[]{Block.enderChest, Item.book});
-        register.registerShapedRecipe(new ItemStack(infinitysword), true, new Object[]{"NNN", "EYF", "DDD", 'N', voucherZombieBoss, 'D', voucherClubCore, 'E', VIBRANIUM_SWORD, 'F', clubVibranium, 'Y', Blocks.blockVibranium});
-        register.registerShapelessRecipe(new ItemStack(infinityingot), true, new Object[]{voucherZombieBoss, VIBRANIUM_INGOT, VIBRANIUM_INGOT});
+        register.registerShapedRecipe(new ItemStack(infinitySword), true,
+                " D ", " D ", " E ",
+                        'E', enchantStick, 'D', infinityingot);
+        register.registerShapelessRecipe(new ItemStack(infinityingot), true,
+                voucherZombieBoss, VIBRANIUM_INGOT, voucherClubCore, voucherZombieBoss, voucherClubCore);
         ItemCoin[] coins = new ItemCoin[]{Item.coinCopper, Item.coinSilver, Item.coinGold, Item.coinAncientMetal, Item.coinMithril, Item.coinAdamantium, coinVibranium};
 
         for(int i = 0; i < coins.length; ++i) {

@@ -14,7 +14,7 @@ public class EnchantmentManagerTrans {
    public static List<EnchantmentInstance> buildEnchantmentList(Random random, ItemStack item_stack, int enchantment_levels) {
       Item item = item_stack.getItem();
       int enchantability = item.getItemEnchantability();
-      int maxSize = item.getHardestMetalMaterial() == Materials.vibranium ? 3 : 2;
+      int maxSize = item.getHardestMetalMaterial() == Materials.vibranium ? 3 : (item.getHardestMetalMaterial() == Materials.enchant ? 4 : 2);
       if (enchantability <= 0) {
          return null;
       } else {
@@ -91,7 +91,7 @@ public class EnchantmentManagerTrans {
    @Overwrite
    private static Map<Integer, EnchantmentInstance> mapEnchantmentData(int enchantment_levels, ItemStack item_stack) {
       Item item = item_stack.getItem();
-      boolean is_vibranium = item.getHardestMetalMaterial() == Materials.vibranium;
+      boolean is_enhance = item.getHardestMetalMaterial() == Materials.vibranium || item.getHardestMetalMaterial() == Materials.enchant;
       boolean is_book = item == Item.book;
       HashMap<Integer, EnchantmentInstance> map = new HashMap<>();
 
@@ -100,7 +100,7 @@ public class EnchantmentManagerTrans {
          if (enchantment != null && (is_book || enchantment.canEnchantItem(item)) && !enchantment.enchantIndividually()) {
             if (enchantment.hasLevels()) {
                for(int level =
-                   is_vibranium ? enchantment.getNumLevelsForVibranium() : enchantment.getNumLevels(); level > 0; --level) {
+                   is_enhance ? enchantment.getNumLevelsForVibranium() : enchantment.getNumLevels(); level > 0; --level) {
                   if (enchantment.getMinEnchantmentLevelsCost(level) <= enchantment_levels) {
                      map.put(enchantment.effectId, new EnchantmentInstance(enchantment, level));
                      break;

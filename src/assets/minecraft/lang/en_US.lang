@@ -15,6 +15,11 @@ item.vibranium_dagger.name=振金短剑
 item.vibranium_war_hammer.name=振金战锤
 item.vibranium_battle_axe.name=振金战斧
 item.vibranium_bow.name=振金弓
+item.enchant_sword.name=附魔金属剑
+item.enchant_ingot.name=附魔金属锭
+item.enchant_nugget.name=附魔金属粒
+item.enchant_stick.name=附魔金属棒
+item.enchant_pickaxe.name=附魔金属镐
 
 item.enhance_stone/iron.name=抛光石
 item.enhance_stone/mithril.name=精锻石
@@ -34,7 +39,7 @@ item.ring_killer_ancient.name=远古魔灵刃
 item.ring_killer_mithril.name=秘银魔灵刃
 item.ring_killer_adamantium.name=艾德曼魔灵刃
 item.ring_killer_vibranium.name=振金魔灵刃
-item.ring_killer_infinity.name=无尽魔灵刃
+item.ring_killer_infinity.name=杀戮光环
 
 tile.anvil_vibranium.name=振金砧
 tile.anvil_vibranium.intact.name=振金砧
@@ -60,6 +65,8 @@ achievement.vibraniumArmor=那我岂不是无敌了?
 achievement.vibraniumArmor.desc=穿上全套振金装备
 achievement.vibraniumFurnace="原子再构机"
 achievement.vibraniumFurnace.desc=制作一个振金熔炉(它可以把煤炭变成钻石!)
+achievement.infinitySword="无敌的开始？不，才刚刚起步罢了"
+achievement.infinitySword.desc="制作出你的第一个神器：攻伐之剑"
 commands.version.playing=你现在正在游玩
 commands.day.msg=今天是这个世界的第 %s 天
 
@@ -78,7 +85,7 @@ entity.EntityWanderingWitch.name=流浪女巫
 entity.EntityZombieDoor.name=僵尸盗贼
 entity.EntityExchanger.name=转移骷髅
 entity.EntityZombieBoss.name=僵尸BOSS
-entity.EntitySkeletonBoss.name=僵尸BOSS
+entity.EntitySkeletonBoss.name=骷髅BOSS
 entity.EntitySkeletonShadow.name=虚无骷髅
 entity.EntitySpiderQueen.name=蛛后
 
@@ -137,7 +144,9 @@ item.voucher_club_core.name=棒核心
 item.voucher_fishing.name=垂钓凭证
 item.voucher_planting.name=种植凭证
 item.voucher_villager.name=村民凭证
-item.voucher_goldbody_core=金身核心
+item.voucher_goldbody_core.name=金身核心
+item.voucher_skeletonboss.name=骷髅boss凭证
+item.voucher_ultimateannihilation.name=终湮骷髅凭证
 
 item.end_book.name=末影书
 item.infinity_sword.name=攻伐之剑
@@ -151,15 +160,9 @@ entity.EntityZombieDoorLord.name=盗贼僵尸领主
 material.vibranium.name=振金
 item.fishing_rods/vibranium_fishrod.name=振金钓鱼竿
 item.china_fu.name=福?
-item.Unassailable_ChestPlate=无懈可击之甲
+item.unassailable_chestplate.name=无懈可击之甲
 
 item.zombieboss.name=僵尸BOSS凭证
 item.ghast.name=恶魂凭证
 item.bedrock.name=基岩凭证
 item.vibraniumdoor.name=僵尸盗贼领主凭证
-
-
-
-
-
-

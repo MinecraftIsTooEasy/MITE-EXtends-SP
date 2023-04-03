@@ -2,7 +2,6 @@ package net.xiaoyu233.mitemod.miteite.entity;
 
 import net.minecraft.*;
 import net.xiaoyu233.mitemod.miteite.item.Items;
-import net.xiaoyu233.mitemod.miteite.util.Configs;
 
 public class EntityBedrockElemental extends EntityEarthElemental {
     private int spawnCounter;
@@ -43,7 +42,7 @@ public class EntityBedrockElemental extends EntityEarthElemental {
     public boolean isImmuneTo(DamageSource damage_source) {
         ItemStack item_stack = damage_source.getItemAttackedWith();
         boolean noNull = item_stack != null && item_stack.getItem() instanceof ItemTool;
-        if (noNull && item_stack.itemID == Items.infinitysword.itemID ||
+        if (noNull && item_stack.itemID == Items.infinitySword.itemID ||
                 noNull && item_stack.itemID == Items.VIBRANIUM_WAR_HAMMER.itemID ||
                 noNull && item_stack.itemID == Items.VIBRANIUM_PICKAXE.itemID) {
             return false;

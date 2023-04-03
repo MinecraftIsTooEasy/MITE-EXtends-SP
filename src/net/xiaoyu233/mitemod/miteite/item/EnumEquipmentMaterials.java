@@ -28,11 +28,10 @@ public class EnumEquipmentMaterials{
         }
     }
 
-    static {
-    }
-
     public static final EnumEquipmentMaterial vibranium = newEnumEquipmentMaterial(512.0f, 120, EnumQuality.legendary, "vibranium");
-    public static final EnumEquipmentMaterial infinity = newEnumEquipmentMaterial(64800f, 120, EnumQuality.legendary, "infinity");
+    public static final EnumEquipmentMaterial infinity = newEnumEquipmentMaterial(64800.0f, 0, EnumQuality.legendary, "infinity");
+    public static final EnumEquipmentMaterial enchant = newEnumEquipmentMaterial(256.0f, 1024, EnumQuality.masterwork, "enchant");
+
     private static final EnumEquipmentMaterial newEnumEquipmentMaterial(float durability, int enchantability, EnumQuality max_quality, String name){
         try {
             return (EnumEquipmentMaterial) constructorAccessor.newInstance(new Object[]{name,ordinary++,durability,enchantability,max_quality,name});

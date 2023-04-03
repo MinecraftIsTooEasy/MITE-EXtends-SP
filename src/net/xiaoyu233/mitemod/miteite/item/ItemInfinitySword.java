@@ -9,7 +9,7 @@ import net.xiaoyu233.mitemod.miteite.util.ColorText;
 public class ItemInfinitySword extends ItemSword {
     public boolean Method_Towards = false;
     protected ItemInfinitySword(int par1) {
-        super(par1, Materials.vibranium);
+        super(par1, Materials.infinity);
     }
     @Override
     public Class[] getSimilarClasses() {

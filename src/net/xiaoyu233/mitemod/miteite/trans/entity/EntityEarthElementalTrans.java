@@ -1,6 +1,7 @@
 package net.xiaoyu233.mitemod.miteite.trans.entity;
 
 import net.minecraft.*;
+import net.xiaoyu233.mitemod.miteite.item.Items;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -117,7 +118,8 @@ public abstract class EntityEarthElementalTrans extends EntityAnimalWatcher {
             return false;
         } else {
             ItemStack item_stack = damage_source.getItemAttackedWith();
-            if (item_stack != null && item_stack.getItem() instanceof ItemTool && item_stack.getItemAsTool().isEffectiveAgainstBlock(this.getBlock(), 0)) {
+            if (item_stack != null && (item_stack.getItem() instanceof ItemTool && item_stack.getItemAsTool().isEffectiveAgainstBlock(this.getBlock(), 0)
+            ) || item_stack.getItem().itemID == Items.infinitySword.itemID) {
                 return false;
             } else if (!this.isWood()) {
                 return !damage_source.isExplosion();

@@ -8,6 +8,7 @@ import net.minecraft.Minecraft;
 public class Materials extends Material {
     public static final Materials vibranium = (Materials) new Materials(EnumEquipmentMaterials.vibranium).setMetal(false).setHarmedByLava(false).setMinHarvestLevel(6);
     public static final Materials infinity = (Materials) new Materials(EnumEquipmentMaterials.infinity).setMetal(false).setHarmedByLava(false).setMinHarvestLevel(114514);
+    public static final Materials enchant = (Materials) new Materials(EnumEquipmentMaterials.enchant).setMetal(false).setHarmedByLava(false).setMinHarvestLevel(6);
     public Materials(EnumEquipmentMaterial enum_crafting_material) {
         super(enum_crafting_material);
     }
@@ -55,7 +56,9 @@ public class Materials extends Material {
             return 4.0F;
         } else if (this == vibranium) {
             return 9.0F;
-        } else if (this == infinity) {
+        } else if (this == enchant) {
+            return 8.0F;
+        }else if (this == infinity) {
             return 12.0F;
         }else {
             Minecraft.setErrorMessage("getDamageVsEntity: unhandled material " + this.name);

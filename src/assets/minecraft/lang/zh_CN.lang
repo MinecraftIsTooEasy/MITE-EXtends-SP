@@ -15,6 +15,11 @@ item.vibranium_dagger.name=振金短剑
 item.vibranium_war_hammer.name=振金战锤
 item.vibranium_battle_axe.name=振金战斧
 item.vibranium_bow.name=振金弓
+item.enchant_sword.name=附魔金属剑
+item.enchant_ingot.name=附魔金属锭
+item.enchant_nugget.name=附魔金属粒
+item.enchant_stick.name=附魔金属棒
+item.enchant_pickaxe.name=附魔金属镐
 
 item.enhance_stone/iron.name=抛光石
 item.enhance_stone/mithril.name=精锻石
@@ -161,9 +166,3 @@ item.zombieboss.name=僵尸BOSS凭证
 item.ghast.name=恶魂凭证
 item.bedrock.name=基岩凭证
 item.vibraniumdoor.name=僵尸盗贼领主凭证
-
-
-
-
-
-

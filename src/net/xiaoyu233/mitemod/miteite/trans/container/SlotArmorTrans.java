@@ -30,9 +30,19 @@ public class SlotArmorTrans extends Container {
          if (item.getItemEnchantability() <= 0) {
             return 0;
          } else {
-            if (numAccessibleBookshelves > 24 && item.getHardestMetalMaterial() != Materials.vibranium) {
-               numAccessibleBookshelves = 24;
-            }
+            if (numAccessibleBookshelves > 24 && item.getHardestMetalMaterial() != Materials.vibranium
+                    && item.getHardestMetalMaterial() != Materials.enchant
+            ) {
+//               if (item.getHardestMetalMaterial() != Materials.enchant) {
+//                  numAccessibleBookshelves = 36;
+//               } else
+//               {
+                  numAccessibleBookshelves = 24;
+               }
+//            }
+//            else if(item.getHardestMetalMaterial() == Materials.enchant){
+//               numAccessibleBookshelves = 36;
+//            }
 
             Block enchantment_table_block = super.world.getBlock(this.posX, this.posY, this.posZ);
             int enchantment_table_power = (1 + numAccessibleBookshelves) * (enchantment_table_block == Block.enchantmentTableEmerald ? 2 : 4);

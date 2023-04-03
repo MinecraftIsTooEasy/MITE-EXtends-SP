@@ -206,8 +206,10 @@ public abstract class ItemTrans {
          return Item.ancientMetalNugget;
       } else if (material_for_repairs == Materials.vibranium) {
          return Items.VIBRANIUM_NUGGET;
-      }else if (material_for_repairs == Materials.infinity) {
+      } else if (material_for_repairs == Materials.infinity) {
          return Items.infinityingot;
+      } else if (material_for_repairs == Materials.enchant) {
+         return Items.enchantNugget;
       } else if (material_for_repairs == Materials.redstone) {
          return Items.redstone;
       } else {

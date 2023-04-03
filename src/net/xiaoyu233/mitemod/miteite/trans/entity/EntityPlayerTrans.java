@@ -1,10 +1,7 @@
 package net.xiaoyu233.mitemod.miteite.trans.entity;
 
 import net.minecraft.*;
-import net.xiaoyu233.fml.relaunch.server.Main;
 import net.xiaoyu233.mitemod.miteite.achievement.Achievements;
-import net.xiaoyu233.mitemod.miteite.block.BlockSpawn;
-import net.xiaoyu233.mitemod.miteite.block.Blocks;
 import net.xiaoyu233.mitemod.miteite.entity.EntityZombieBoss;
 import net.xiaoyu233.mitemod.miteite.inventory.container.ForgingTableSlots;
 import net.xiaoyu233.mitemod.miteite.item.*;
@@ -232,6 +229,14 @@ public abstract class EntityPlayerTrans extends EntityLiving implements ICommand
       }
    }
 
+   public void attackMonsters(List<Entity> targets) {
+      for (Entity target : targets) {
+         EntityMonster entityMonster = target instanceof EntityMonster ? (EntityMonster) target : null;
+         if (entityMonster != null) {
+            entityMonster.attackEntityFrom(new Damage(DamageSource.causePlayerDamage(this.getAsPlayer()), 30));
+         }
+      }
+   }
    @Overwrite
    public void attackTargetEntityWithCurrentItem(Entity target) {
 
@@ -242,7 +247,18 @@ public abstract class EntityPlayerTrans extends EntityLiving implements ICommand
       if (!this.isImmuneByGrace() && target.canAttackWithItem()) {
          boolean critical = this.willDeliverCriticalStrike();
          float critBouns = 0.0F;
+
          ItemStack heldItemStack = this.getHeldItemStack();
+
+         if(heldItemStack.getItem() != null
+                 && heldItemStack.getItem().itemID == Items.infinitySword.itemID
+         ){
+            //System.out.println("infinitysword");
+            List<Entity> targets  = this.getNearbyEntities(30, 30);
+            if(targets.size() > 0) {
+               this.attackMonsters(targets);
+            }
+         }
 
          //Check for crit enchantment
          if (EnchantmentManager.hasEnchantment(heldItemStack, Enchantments.CRIT) && !(target instanceof EntityZombieBoss)) {
@@ -860,7 +876,7 @@ public abstract class EntityPlayerTrans extends EntityLiving implements ICommand
       }
 
       ItemStack item_stack = damage.getSource().getItemAttackedWith();
-      if (item_stack != null && item_stack.getItem() instanceof ItemInfinitySword && item_stack.itemID == Items.infinitysword.itemID && !this.InfSwordAttackingMethod) {
+      if (item_stack != null && item_stack.getItem() instanceof ItemInfinitySword && item_stack.itemID == Items.infinitySword.itemID && !this.InfSwordAttackingMethod) {
          return null;
       }
 
@@ -954,7 +970,7 @@ public abstract class EntityPlayerTrans extends EntityLiving implements ICommand
          return null;
       }
    }
-   public void attackMonsters(List <Entity>targets) {
+   public void attackMonstersKiller(List <Entity>targets) {
       float damage = ((ItemRingKiller)itemRingKiller.getItem()).getRingKillerSkillDamage();
       for(int i = 0; i< targets.size(); i++) {
          EntityMonster entityMonster = targets.get(i) instanceof EntityMonster ? (EntityMonster)targets.get(i) : null;
@@ -1015,7 +1031,7 @@ public abstract class EntityPlayerTrans extends EntityLiving implements ICommand
             List <Entity>targets  = this.getNearbyEntities(range, range);
             if(targets.size() > 0) {
                if(this.surroundHurtCollDown == cooldownTime) {
-                  this.attackMonsters(targets);
+                  this.attackMonstersKiller(targets);
                   --this.surroundHurtCollDown;
                } else {
                   --this.surroundHurtCollDown;
@@ -1389,6 +1405,8 @@ public abstract class EntityPlayerTrans extends EntityLiving implements ICommand
    public boolean willDeliverCriticalStrike() {
       return false;
    }
+
+   @Shadow protected abstract void entityInit();
 
    public boolean InfSwordAttackingMethod = false;
 }

@@ -56,7 +56,7 @@ public class MITEITEMod extends AbstractMod {
 
     @Override
     public String modVerStr() {
-        return "v1.3.1";
+        return Constant.MITE_ITE_VERSION;
     }
 
 }

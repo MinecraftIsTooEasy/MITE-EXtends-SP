@@ -13,7 +13,7 @@ public class EntityUltimateAnnihilationSkeleton extends EntitySkeleton {
     private int despawnCount;
     private boolean haveTryToSpawnExchanger = false;
     private final ItemStack weapon = Utils.safeMake(()-> {
-        ItemStack itemStack = new ItemStack(Items.infinitysword);
+        ItemStack itemStack = new ItemStack(Items.infinitySword);
         itemStack.addEnchantment(Enchantment.knockback,10);
         itemStack.addEnchantment(Enchantments.EXTEND,5);
         return itemStack;

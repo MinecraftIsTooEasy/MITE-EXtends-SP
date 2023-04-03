@@ -19,7 +19,7 @@ public class Achievements {
         wearAllVibraniumPlateArmor = new Achievement(getNextAchievementID(),"vibraniumArmor",12,1,Items.VIBRANIUM_CHESTPLATE,AchievementList.wearAllAdamantiumPlateArmor).setSpecial().registerAchievement();
         vibraniumAnvil = new Achievement(getNextAchievementID(),"vibraniumAnvil",0,17, Blocks.anvilVibranium,vibraniumIngot).setSpecial().registerAchievement();
         vibraniumFurnace = new Achievement(getNextAchievementID(),"vibraniumFurnace",-4,17,Blocks.furnaceVibraniumIdle,vibraniumIngot).setSpecial().registerAchievement();
-        infinitySword = new Achievement(getNextAchievementID(),"infinitySword",0,19,Items.infinitysword,infinitySword).setSpecial().registerAchievement();
+        infinitySword = new Achievement(getNextAchievementID(),"infinitySword",0,19,Items.infinitySword,infinitySword).setSpecial().registerAchievement();
     }
     private static int getNextAchievementID(){
         return Constant.nextAchievementID++;
