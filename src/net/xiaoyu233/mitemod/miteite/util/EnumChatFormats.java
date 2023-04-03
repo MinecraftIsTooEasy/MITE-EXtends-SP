@@ -35,6 +35,7 @@ public class EnumChatFormats {
      * */
     public static final List<EnumChatFormat> VALUES = Lists.newArrayList(EnumChatFormat.values());
     public static final EnumChatFormat LIGHT_BLUE = newEnumChatFormat("LIGHT_BLUE",'s',151,215,224);
+    public static final EnumChatFormat GOLD = newEnumChatFormat("GOLD",'g',255,170,0);
     public static final EnumChatFormat LIGHT_YELLOW_GREEN = newEnumChatFormat("LIGHT_YELLOW_GREEN",'t',126,222,188);
     public static final EnumChatFormat DARK_GREY = newEnumChatFormat("DARK_GREY",'u',16,87,75);
     public static final EnumChatFormat LIGHT_ORANGE = newEnumChatFormat("LIGHT_ORANGE",'v',234,158,50);

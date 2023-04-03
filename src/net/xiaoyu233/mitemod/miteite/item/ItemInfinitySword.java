@@ -4,28 +4,28 @@ import java.util.List;
 
 import net.minecraft.*;
 import net.xiaoyu233.fml.reload.event.PlayerLoggedInEvent;
+import net.xiaoyu233.mitemod.miteite.util.ColorText;
 
 public class ItemInfinitySword extends ItemSword {
     public boolean Method_Towards = false;
     protected ItemInfinitySword(int par1) {
         super(par1, Materials.vibranium);
     }
-
+    @Override
     public Class[] getSimilarClasses() {
         return ItemTool.weapon_classes;
     }
-
+    @Override
     public int getNumComponentsForDurability() {
         return 24;
     }
-
+    @Override
     public float getBaseDamageVsEntity() {
         return 2147483647.0F;
     }
-
+    @Override
     public void addInformation(ItemStack item_stack, EntityPlayer player, List info, boolean extended_info, Slot slot) {
-
-        info.add(EnumChatFormat.LIGHT_GRAY + "" + EnumChatFormat.ITALIC + Translator.getFormatted("极其大的伤害", new Object[0]));
+        info.add(ColorText.makeSANIC("无穷尽的伤害"));
     }
     public boolean onItemRightClick(EntityPlayer player, float partial_tick, boolean ctrl_is_down) {
 //        if(player.InfSwordAttackingMethod){
