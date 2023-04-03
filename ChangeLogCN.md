@@ -4,6 +4,12 @@
 # iceLee于v1.3.0结束更新,专注于MITE-ITF和MITE-Hydroxide
 
 
+## v1.3.9-fix
+### bug
+* 修复了一个不为人知的bug
+
+---
+
 ## v1.3.9
 ### 其他
 * 攻伐之剑工具提示改为彩色

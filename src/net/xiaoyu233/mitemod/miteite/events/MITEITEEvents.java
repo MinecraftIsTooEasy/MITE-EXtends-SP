@@ -413,7 +413,7 @@ public class MITEITEEvents {
     public void onPlayerLoggedIn(PlayerLoggedInEvent event) {
         EntityPlayer par1EntityPlayerMP = event.getPlayer();
         par1EntityPlayerMP.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends-SP]:").setColor(EnumChatFormat.WHITE)
-                .appendComponent(ChatMessage.createFromTranslationKey("MITE-EXtends-SP" + Constant.MITE_ITE_VERSION +" 由 ")
+                .appendComponent(ChatMessage.createFromTranslationKey("MITE-EXtends-SP-" + Constant.MITE_ITE_VERSION +" 由 ")
                         .appendComponent(ChatMessage.createFromTranslationKey("lee、whscqngsd、rizur、NoRegrets/Huix").setColor(EnumChatFormat.WHITE)))
                 .addText(" 重写自wensc的extreme").setColor(EnumChatFormat.DARK_AQUA));
 

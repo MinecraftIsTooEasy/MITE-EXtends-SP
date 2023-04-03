@@ -139,6 +139,8 @@ public class ForgingTableRecipes {
     public static void registerZeroToThreeRecipes(Material material, ForgingTableLevel level){
         registerZeroToTwoRecipes(material,level);
         ForgingRecipe.Builder.of(material,3,level).
+                //不为人知的bug
+                //setChanceOfFailure(100).
                 setChanceOfFailure(Items.IRON_ENHANCE_STONE.getFailChance()).
                 setAxeDurabilityCost(3072).
                 setHammerDurabilityCost(4096).
@@ -154,11 +156,11 @@ public class ForgingTableRecipes {
 
     private static void registerZeroToTwoRecipes(Material material, ForgingTableLevel level){
         ForgingRecipe.Builder.of(material,0,level).
-                setChanceOfFailure(100).
+                setChanceOfFailure(Items.IRON_ENHANCE_STONE.getFailChance()).
                 setAxeDurabilityCost(2048).
                 setHammerDurabilityCost(2048).
                 setTimeReq(20 * 20).
-                addFaultFeedback(DurabilityFeedback.of(DurabilityFeedback.Type.ofPercentage(3))).
+                addFaultFeedback(DurabilityFeedback.of(DurabilityFeedback.Type.ofPercentage(5))).
                 addMaterials(new ItemStack(Items.ingotGold,1),
                         new ItemStack(Items.ingotIron,1),
                         new ItemStack(Items.IRON_ENHANCE_STONE,1)).
