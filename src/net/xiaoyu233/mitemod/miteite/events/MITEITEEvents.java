@@ -12,6 +12,9 @@ import net.xiaoyu233.mitemod.miteite.trans.entity.EntityEarthElementalTrans;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
 import net.xiaoyu233.mitemod.miteite.util.Constant;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 public class MITEITEEvents {
 
     @Subscribe
@@ -411,8 +414,13 @@ public class MITEITEEvents {
         EntityPlayer par1EntityPlayerMP = event.getPlayer();
         par1EntityPlayerMP.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends-SP]:").setColor(EnumChatFormat.WHITE)
                 .appendComponent(ChatMessage.createFromTranslationKey("MITE-EXtends-SP" + Constant.MITE_ITE_VERSION +" 由 ")
-                        .appendComponent(ChatMessage.createFromTranslationKey("lee、whscqngsd、rizur").setColor(EnumChatFormat.WHITE)))
-                .addText(" 重写").setColor(EnumChatFormat.DARK_AQUA));
+                        .appendComponent(ChatMessage.createFromTranslationKey("lee、whscqngsd、rizur、NoRegrets/Huix").setColor(EnumChatFormat.WHITE)))
+                .addText(" 重写自wensc的extreme").setColor(EnumChatFormat.DARK_AQUA));
+
+//        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+//        Date date = new Date(System.nanoTime());
+//        par1EntityPlayerMP.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends-SP]:")
+//                .appendComponent(ChatMessage.createFromTranslationKey("版本构建时间: " + formatter.format(date))).setColor(EnumChatFormat.WHITE));
         if (par1EntityPlayerMP.isFirstLogin) {
             par1EntityPlayerMP.isFirstLogin = false;
         }
