@@ -419,8 +419,8 @@ public class MITEITEEvents {
 
 //        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 //        Date date = new Date(System.nanoTime());
-//        par1EntityPlayerMP.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends-SP]:")
-//                .appendComponent(ChatMessage.createFromTranslationKey("版本构建时间: " + formatter.format(date))).setColor(EnumChatFormat.WHITE));
+        par1EntityPlayerMP.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends-SP]:")
+                .appendComponent(ChatMessage.createFromTranslationKey("企鹅交流群: 661223990").setColor(EnumChatFormat.WHITE)));
         if (par1EntityPlayerMP.isFirstLogin) {
             par1EntityPlayerMP.isFirstLogin = false;
         }
