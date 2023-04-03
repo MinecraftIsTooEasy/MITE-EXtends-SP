@@ -154,7 +154,7 @@ public class ForgingTableRecipes {
 
     private static void registerZeroToTwoRecipes(Material material, ForgingTableLevel level){
         ForgingRecipe.Builder.of(material,0,level).
-                setChanceOfFailure(Items.IRON_ENHANCE_STONE.getFailChance()).
+                setChanceOfFailure(100).
                 setAxeDurabilityCost(2048).
                 setHammerDurabilityCost(2048).
                 setTimeReq(20 * 20).

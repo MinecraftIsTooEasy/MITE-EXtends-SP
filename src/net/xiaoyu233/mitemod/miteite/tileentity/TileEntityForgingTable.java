@@ -1,13 +1,16 @@
 package net.xiaoyu233.mitemod.miteite.tileentity;
 
+import com.google.common.collect.Lists;
 import net.minecraft.*;
 import net.xiaoyu233.mitemod.miteite.block.BlockForgingTable;
 import net.xiaoyu233.mitemod.miteite.inventory.container.ForgingTableSlots;
+import net.xiaoyu233.mitemod.miteite.item.Items;
 import net.xiaoyu233.mitemod.miteite.item.recipe.ForgingRecipe;
 import net.xiaoyu233.mitemod.miteite.item.recipe.IFaultFeedback;
 import net.xiaoyu233.mitemod.miteite.network.SPacketFinishForging;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class TileEntityForgingTable extends TileEntity implements IInventory {
     private String customName;
@@ -79,11 +82,17 @@ public class TileEntityForgingTable extends TileEntity implements IInventory {
         this.slots.onFinishForging(SPacketFinishForging.Status.FAILED);
         this.slots.damageHammerAndAxe(currentRecipe.getHammerDurabilityCost() / 2, currentRecipe.getAxeDurabilityCost() / 2);
         this.slots.costItems(currentRecipe);
-        ItemStack result = this.slots.getToolItem();
-        for (IFaultFeedback iFaultFeedback : currentRecipe.getFaultFeedback()) {
-            result = iFaultFeedback.accept(result);
+
+        if (this.slots.getUp().getStack() != null) {
+            if (!(this.slots.getUp().getStack().getItem().itemID == Items.UNIVERSAL_ENHANCE_STONE.itemID)) {
+                ItemStack result = this.slots.getToolItem();
+                for (IFaultFeedback iFaultFeedback : currentRecipe.getFaultFeedback()) {
+                    result = iFaultFeedback.accept(result);
+                }
+                this.slots.setToolItem(result);
+            }
         }
-        this.slots.setToolItem(result);
+
         this.slots.updateSlots();
     }
 

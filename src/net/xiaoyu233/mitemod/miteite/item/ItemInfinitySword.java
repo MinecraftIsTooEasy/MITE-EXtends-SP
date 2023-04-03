@@ -24,6 +24,7 @@ public class ItemInfinitySword extends ItemSword {
     }
 
     public void addInformation(ItemStack item_stack, EntityPlayer player, List info, boolean extended_info, Slot slot) {
+
         info.add(EnumChatFormat.LIGHT_GRAY + "" + EnumChatFormat.ITALIC + Translator.getFormatted("极其大的伤害", new Object[0]));
     }
     public boolean onItemRightClick(EntityPlayer player, float partial_tick, boolean ctrl_is_down) {

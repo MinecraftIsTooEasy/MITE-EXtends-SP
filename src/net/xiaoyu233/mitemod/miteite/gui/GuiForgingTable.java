@@ -131,7 +131,7 @@ public class GuiForgingTable extends awy implements ICrafting {
     @Override
     protected void a(aut par1GuiButton) {
         super.a(par1GuiButton);
-        if (par1GuiButton.g == 0) {
+        if (par1GuiButton.g == 0 && this.forgingTable.getSlot(0).getStack() != null) {
             player.sendPacket(new CPacketStartForging());
             //enable = false
             this.startButton.h = false;

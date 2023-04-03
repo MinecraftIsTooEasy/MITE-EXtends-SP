@@ -2,6 +2,7 @@ package net.xiaoyu233.mitemod.miteite.inventory.container;
 
 import com.google.common.collect.Lists;
 import net.minecraft.*;
+import net.xiaoyu233.mitemod.miteite.item.Items;
 import net.xiaoyu233.mitemod.miteite.item.enchantment.Enchantments;
 import net.xiaoyu233.mitemod.miteite.item.recipe.ForgingRecipe;
 import net.xiaoyu233.mitemod.miteite.item.recipe.ForgingTableRecipes;
@@ -73,24 +74,40 @@ public class ForgingTableSlots extends InventorySubcontainer {
         };
     }
 
+    public Slot getUp() {
+        return up;
+    }
+
     public void costItems(ForgingRecipe recipe) {
         List<Slot> currentMaterials = Lists.newArrayList(this.up, this.left, this.right, this.downLeft, this.downRight);
         List<ItemStack> materialsRequired = Lists.newArrayList(recipe.getMaterialsToUpgrade());
+
+        if(this.up.getStack().getItem().itemID == Items.UNIVERSAL_ENHANCE_STONE.itemID){
+            int enhanceSize = this.up.getStack().stackSize - 1;
+            if (enhanceSize > 0) {
+                this.up.getStack().setStackSize(enhanceSize);
+            } else {
+                this.up.putStack(null);
+            }
+        }
 
         for (Slot current : currentMaterials) {
             for (ItemStack req : materialsRequired) {
                 if (current.getStack() != null && ItemStack.areItemStacksEqual(req, current.getStack(), true, false, false, true)) {
                     int resultSize = current.getStack().stackSize - req.stackSize;
-                    if (resultSize > 0) {
-                        current.getStack().setStackSize(resultSize);
-                    } else {
-                        current.putStack(null);
-                    }
+                        if (resultSize > 0) {
+                            current.getStack().setStackSize(resultSize);
+                        } else {
+                            current.putStack(null);
+                        }
                 }
             }
         }
-
     }
+
+//    public boolean enhanceProtect(){
+//        return this.up.getStack().getItem().itemID == Items.UNIVERSAL_ENHANCE_STONE.itemID;
+//    }
 
     public void damageHammerAndAxe(int hammerDurabilityCost, int axeDurabilityCost) {
         this.hammer.putStack(this.damageItem(this.hammer.getStack(), hammerDurabilityCost));
