@@ -5,6 +5,7 @@ import net.minecraft.*;
 import net.xiaoyu233.fml.reload.event.HandleChatCommandEvent;
 import net.xiaoyu233.fml.reload.event.PacketRegisterEvent;
 import net.xiaoyu233.fml.reload.event.PlayerLoggedInEvent;
+import net.xiaoyu233.mitemod.miteite.MITEITEMod;
 import net.xiaoyu233.mitemod.miteite.item.ArmorModifierTypes;
 import net.xiaoyu233.mitemod.miteite.item.ToolModifierTypes;
 import net.xiaoyu233.mitemod.miteite.network.*;
@@ -428,11 +429,9 @@ public class MITEITEEvents {
                 .appendComponent(ChatMessage.createFromTranslationKey("MITE-EXtends-SP-" + Constant.MITE_ITE_VERSION +" 由 ")
                         .appendComponent(ChatMessage.createFromTranslationKey("lee、whscqngsd、rizur、NoRegrets/Huix").setColor(EnumChatFormat.WHITE)))
                 .addText(" 重写自wensc的extreme").setColor(EnumChatFormat.DARK_AQUA));
-
-//        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-//        Date date = new Date(System.nanoTime());
+        MITEITEMod.checkUpdateVer(par1EntityPlayerMP);
         par1EntityPlayerMP.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends-SP]:")
-                .appendComponent(ChatMessage.createFromTranslationKey("企鹅交流群: 661223990").setColor(EnumChatFormat.WHITE)));
+                .appendComponent(ChatMessage.createFromTranslationKey("企鹅交流群:  661223990").setColor(EnumChatFormat.WHITE)));
         if (par1EntityPlayerMP.isFirstLogin) {
             par1EntityPlayerMP.isFirstLogin = false;
         }

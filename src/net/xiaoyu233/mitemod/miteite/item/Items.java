@@ -235,7 +235,7 @@ public class Items extends Item{
         register("enchant_sword", enchantSword);
         register("enchant_ingot", enchantIngot);
         register("enchant_nugget", enchantNugget);
-        register("enchant_stick", enchantStick);
+        register("enchant_stick", enchantStick,CreativeModeTab.tabMaterials);
         register("enchant_pickaxe", enchantPickaxe);
         register("enchant_src", enchantSRC, CreativeModeTab.tabMaterials);
         //register("china_fu", chinaFu);
@@ -303,6 +303,8 @@ public class Items extends Item{
                         'E', enchantStick, 'D', infinityingot);
         register.registerShapelessRecipe(new ItemStack(infinityingot), true,
                 voucherZombieBoss, VIBRANIUM_INGOT, voucherClubCore, voucherZombieBoss, voucherClubCore);
+        register.registerShapelessRecipe(new ItemStack(voucherAnnihilationSkeleton), true,
+                voucherDoor, voucherZombieLord, voucherWitch, voucherPigman, voucherExchanger);
         ItemCoin[] coins = new ItemCoin[]{Item.coinCopper, Item.coinSilver, Item.coinGold, Item.coinAncientMetal, Item.coinMithril, Item.coinAdamantium, coinVibranium};
 
         for(int i = 0; i < coins.length; ++i) {
@@ -315,17 +317,51 @@ public class Items extends Item{
             register.registerShapelessRecipe(new ItemStack(coin), true, new Object[]{new ItemStack(coin.getNuggetPeer())});
         }
         
-//        register.registerShapelessRecipe(new ItemStack(Items.voucherAnnihilationSkeleton),Object(Items.voucherDoor,Items.voucherZombieLord,Items.voucherWitch,Items.voucherPigman,Items.Exchanger)recipe))
-        register.registerShapedRecipe(new ItemStack(voucherAnnihilationSkeleton),
+        register.registerShapedRecipe(new ItemStack(enchantStick),
                 false,
-                "   ",
-                "D L",
-                "WPE",
-                'D',Items.voucherDoor,
-                'L',Items.voucherZombieLord,
-                'W',Items.voucherWitch,
-                'P',Items.voucherPigman,
-                'E',Items.voucherExchanger);
+                "  I",
+                "  I",
+                'I',Items.enchantIngot);
+        register.registerShapedRecipe(new ItemStack(enchantStick),
+                false,
+                "I  ",
+                "I  ",
+                'I',Items.enchantIngot);
+        register.registerShapedRecipe(new ItemStack(enchantStick),
+                false,
+                " I ",
+                " I ",
+                'I',Items.enchantIngot);
+        register.registerShapedRecipe(new ItemStack(enchantIngot),
+                false,
+                "NNN",
+                "NNN",
+                "NNN",
+                'N',Items.enchantNugget);
+        register.registerShapedRecipe(new ItemStack(enchantSword),
+                false,
+                " I ",
+                " I ",
+                " S ",
+                'I',Items.enchantIngot,
+                'S',Items.OBSIDIAN_STICK);
+        register.registerShapedRecipe(new ItemStack(enchantPickaxe),
+                false,
+                "III",
+                " S ",
+                " S ",
+                'I',Items.enchantIngot,
+                'S',Items.OBSIDIAN_STICK);
+//        register.registerShapedRecipe(new ItemStack(voucherAnnihilationSkeleton),
+//                false,
+//                "   ",
+//                "D L",
+//                "WPE",
+//                'D',Items.voucherDoor,
+//                'L',Items.voucherZombieLord,
+//                'W',Items.voucherWitch,
+//                'P',Items.voucherPigman,
+//                'E',Items.voucherExchanger);
         register.registerShapedRecipe(new ItemStack(voucherGoldBodyCore),
                 false,
                 "   ",

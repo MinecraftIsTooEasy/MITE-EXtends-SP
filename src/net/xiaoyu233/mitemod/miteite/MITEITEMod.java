@@ -1,5 +1,9 @@
 package net.xiaoyu233.mitemod.miteite;
 
+import net.minecraft.ChatMessage;
+import net.minecraft.EntityPlayer;
+import net.minecraft.EnumChatFormat;
+import net.minecraft.HttpUtilities;
 import net.xiaoyu233.fml.AbstractMod;
 import net.xiaoyu233.fml.FishModLoader;
 import net.xiaoyu233.fml.classloading.Mod;
@@ -23,7 +27,25 @@ public class MITEITEMod extends AbstractMod {
     public void preInit() {
 
     }
+    public static void checkUpdateVer(EntityPlayer player){
+        String webVersion = HttpUtilities.performGetRequest("https://lucklong.cn/ExtendVer.txt", 3000, 3000);
+        if (webVersion == null){
+            player.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE)
+                    .appendComponent(ChatMessage.createFromTranslationKey("无法检查更新")).setColor(EnumChatFormat.RED));
+        } else{
+            player.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE)
+                    .appendComponent(ChatMessage.createFromTranslationKey("当前版本: " + Constant.MITE_ITE_VERSION)).setColor(EnumChatFormat.WHITE)
+                    .appendComponent(ChatMessage.createFromTranslationKey("      最新版本: " + webVersion)).setColor(EnumChatFormat.GREEN));
+            if (!Constant.MITE_ITE_VERSION.equals(webVersion)) {
+                player.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE)
+                        .appendComponent(ChatMessage.createFromTranslationKey("有新版本可用,请到交流群中下载")).setColor(EnumChatFormat.GREEN));
+            } else{
+                player.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE)
+                        .appendComponent(ChatMessage.createFromTranslationKey("当前为最新版本")).setColor(EnumChatFormat.GREEN));
+            }
+        }
 
+    }
     @Nonnull
     public InjectionConfig getInjectionConfig() {
         return InjectionConfig.Builder.of("MITE-EXtends", MinecraftTrans.class.getPackage(), MixinEnvironment.Phase.INIT).setRequired().build();
