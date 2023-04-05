@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.MixinEnvironment;
 
 import javax.annotation.Nonnull;
 import javax.swing.*;
-import java.io.File;
 
 @Mod
 public class MITEITEMod extends AbstractMod {

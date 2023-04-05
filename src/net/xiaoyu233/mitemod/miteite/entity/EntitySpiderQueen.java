@@ -1,8 +1,6 @@
 package net.xiaoyu233.mitemod.miteite.entity;
 
 import net.minecraft.*;
-import net.xiaoyu233.mitemod.miteite.item.Items;
-import org.spongepowered.asm.mixin.Overwrite;
 
 public class EntitySpiderQueen extends EntityArachnid {
     private final int num_webs;

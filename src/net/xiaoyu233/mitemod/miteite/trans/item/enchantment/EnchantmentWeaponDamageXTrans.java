@@ -3,7 +3,6 @@ package net.xiaoyu233.mitemod.miteite.trans.item.enchantment;
 import net.minecraft.*;
 import net.xiaoyu233.mitemod.miteite.item.Materials;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(EnchantmentWeaponDamage.class)

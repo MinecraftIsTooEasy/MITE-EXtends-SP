@@ -2,6 +2,7 @@ package net.xiaoyu233.mitemod.miteite.trans.block;
 
 import net.minecraft.*;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
+import net.xiaoyu233.mitemod.miteite.world.BiomeBases;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -197,7 +198,11 @@ public abstract class BlockPortalTrans extends Block {
                         par1World.setBlock(par2 + var5 * var7, par3 + var8, par4 + var6 * var7, Block.portal.blockID, metadata, 2);
                      }
                   } else {
-                     par1World.setBlock(par2 + var5 * var7, par3 + var8, par4 + var6 * var7, Block.portal.blockID, metadata, 2);
+                     if (par1World.getBiomeGenForCoords(par2, par4) == BiomeBases.volcano) {
+                        par1World.setBlock(par2 + var5 * var7, par3 + var8, par4 + var6 * var7, Block.portal.blockID, 1, 2);
+                     } else{
+                        par1World.setBlock(par2 + var5 * var7, par3 + var8, par4 + var6 * var7, Block.portal.blockID, 0, 2);
+                     }
                   }
                }
             }

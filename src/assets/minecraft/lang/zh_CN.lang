@@ -20,11 +20,20 @@ item.enchant_ingot.name=附魔金属锭
 item.enchant_nugget.name=附魔金属粒
 item.enchant_stick.name=附魔金属棒
 item.enchant_pickaxe.name=附魔金属镐
+item.enchant_src.name=附魔源矿
 
 item.enhance_stone/iron.name=抛光石
 item.enhance_stone/mithril.name=精锻石
 item.enhance_stone/adamantium.name=淬炼石
 item.enhance_stone/universal.name=精粹录
+
+tile.volcano/volcano_stone.name=火山岩
+tile.volcano/volcano_sand.name=火山沙
+tile.volcano/volcano_cobble_stone.name=火山圆石
+tile.volcano/volcano_ashes.name=火山灰烬
+tile.volcano/volcano_diamond_ore.name=火山钻石矿
+tile.volcano/volcano_mithril_ore.name=火山秘银矿
+tile.volcano/volcano_emerald_ore.name=火山绿宝石矿
 
 item.copper_club.name=铜棒
 item.silver_club.name=银棒
@@ -78,6 +87,7 @@ enchantment.beheading=斩首
 enchantment.conqueror=征服者
 enchantment.fixed=固定
 enchantment.chain=连锁
+enchantment.range=范围杀戮
 
 entity.EntityZombieLord.name=僵尸领主
 entity.EntityAnnihilationSkeleton.name=湮灭骷髅

@@ -1,14 +1,6 @@
 package net.xiaoyu233.mitemod.miteite.block;
 
-import net.minecraft.Block;
-import net.minecraft.BlockConstants;
-import net.minecraft.BlockHalfTransparant;
-import net.minecraft.BlockSubtypes;
-import net.minecraft.CreativeModeTab;
-import net.minecraft.IBlockWithSubtypes;
-import net.minecraft.IIcon;
-import net.minecraft.Material;
-import net.minecraft.mt;
+import net.minecraft.*;
 
 public class BlockGotcha extends BlockHalfTransparant implements IBlockWithSubtypes {
     private BlockSubtypes subtypes = new BlockSubtypes(new String[]{"black", "red", "green", "brown", "blue", "purple", "cyan", "light_gray", "gray", "pink", "lime", "yellow", "light_blue", "magenta", "orange", "white"});

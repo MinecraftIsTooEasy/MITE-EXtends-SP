@@ -8,12 +8,9 @@ import net.xiaoyu233.fml.reload.event.PlayerLoggedInEvent;
 import net.xiaoyu233.mitemod.miteite.item.ArmorModifierTypes;
 import net.xiaoyu233.mitemod.miteite.item.ToolModifierTypes;
 import net.xiaoyu233.mitemod.miteite.network.*;
-import net.xiaoyu233.mitemod.miteite.trans.entity.EntityEarthElementalTrans;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
 import net.xiaoyu233.mitemod.miteite.util.Constant;
-
-import java.sql.Date;
-import java.text.SimpleDateFormat;
+import net.xiaoyu233.mitemod.miteite.world.BiomeBases;
 
 public class MITEITEEvents {
 
@@ -122,6 +119,21 @@ public class MITEITEEvents {
                 player.setPositionAndUpdate(poses[0], poses[1], poses[2]);
                 event.setExecuteSuccess(true);
             }
+
+//            if (par2Str.startsWith("findB")) {
+//
+//                while (!(world.getBiomeGenForCoords((int) player.posX, (int) player.posZ) == BiomeBases.volcano)){
+//                    player.posX ++; player.posZ++;
+//                    if (world.getBiomeGenForCoords((int) player.posX, (int) player.posZ) == BiomeBases.volcano) {
+//                        commandListener.sendChatToPlayer(ChatMessage.createFromText(String.valueOf(player.posX)).setColor(EnumChatFormat.LIGHT_GRAY));
+//                        commandListener.sendChatToPlayer(ChatMessage.createFromText(String.valueOf(player.posZ)).setColor(EnumChatFormat.LIGHT_GRAY));
+//                    }
+//
+//                }
+//
+//
+//                event.setExecuteSuccess(true);
+//            }
 
             if (par2Str.startsWith("xsummon")) {
                 int id = Integer.parseInt(par2Str.substring(8));

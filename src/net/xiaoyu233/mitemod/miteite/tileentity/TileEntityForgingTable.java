@@ -1,6 +1,5 @@
 package net.xiaoyu233.mitemod.miteite.tileentity;
 
-import com.google.common.collect.Lists;
 import net.minecraft.*;
 import net.xiaoyu233.mitemod.miteite.block.BlockForgingTable;
 import net.xiaoyu233.mitemod.miteite.inventory.container.ForgingTableSlots;
@@ -10,7 +9,6 @@ import net.xiaoyu233.mitemod.miteite.item.recipe.IFaultFeedback;
 import net.xiaoyu233.mitemod.miteite.network.SPacketFinishForging;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class TileEntityForgingTable extends TileEntity implements IInventory {
     private String customName;

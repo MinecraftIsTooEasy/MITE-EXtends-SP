@@ -5,7 +5,6 @@ import net.xiaoyu233.mitemod.miteite.item.Items;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
 
 import java.util.Random;
-import java.util.UUID;
 
 public class EntityWanderingWitch extends EntityWitch {
     private int aliveBatsCount;

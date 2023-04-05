@@ -1,6 +1,6 @@
 package net.xiaoyu233.mitemod.miteite.render.entity;
 
-import net.minecraft.*;
+import net.minecraft.RenderEarthElemental;
 
 public class RenderBedrockElemental extends RenderEarthElemental{
     @Override

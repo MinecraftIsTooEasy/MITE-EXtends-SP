@@ -1,10 +1,10 @@
 package net.xiaoyu233.mitemod.miteite.trans.entity;
 
-import net.xiaoyu233.mitemod.miteite.item.Items;
-import net.xiaoyu233.mitemod.miteite.util.Configs;
-import net.xiaoyu233.mitemod.miteite.util.Constant;
+import net.minecraft.EntityAIGetOutOfLava;
+import net.minecraft.EntityArachnid;
+import net.minecraft.EntityDemonSpider;
+import net.minecraft.World;
 import org.spongepowered.asm.mixin.Mixin;
-import net.minecraft.*;
 
 @Mixin(EntityDemonSpider.class)
 public class EntityDemonSpiderTrans extends EntityArachnid {

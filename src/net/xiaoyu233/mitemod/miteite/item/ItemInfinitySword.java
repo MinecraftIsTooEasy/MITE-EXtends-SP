@@ -1,10 +1,9 @@
 package net.xiaoyu233.mitemod.miteite.item;
 
-import java.util.List;
-
 import net.minecraft.*;
-import net.xiaoyu233.fml.reload.event.PlayerLoggedInEvent;
 import net.xiaoyu233.mitemod.miteite.util.ColorText;
+
+import java.util.List;
 
 public class ItemInfinitySword extends ItemSword {
     public boolean Method_Towards = false;

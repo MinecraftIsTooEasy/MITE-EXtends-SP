@@ -1,14 +1,8 @@
 package net.xiaoyu233.mitemod.miteite.trans.block;
 
-import net.minecraft.BlockBreakInfo;
 import net.minecraft.BlockLongGrass;
 import net.minecraft.BlockPlant;
-import net.minecraft.EntityPlayer;
-import net.minecraft.EnumEntityFX;
-import net.minecraft.Item;
 import net.minecraft.Material;
-import net.minecraft.World;
-import net.xiaoyu233.mitemod.miteite.util.Constant;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(BlockLongGrass.class)

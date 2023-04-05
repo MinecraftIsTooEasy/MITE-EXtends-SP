@@ -1,20 +1,11 @@
 package net.xiaoyu233.mitemod.miteite.trans.entity;
 
 import net.minecraft.*;
-import net.minecraft.server.MinecraftServer;
+import net.xiaoyu233.mitemod.miteite.item.Items;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import net.xiaoyu233.mitemod.miteite.util.Constant;
-import net.xiaoyu233.mitemod.miteite.item.Items;
-
-import java.util.List;
-import java.util.UUID;
 
 @Mixin(EntityPigZombie.class)
 public abstract class EntityZombiePigmanTrans extends EntityZombie implements IRangedEntity {

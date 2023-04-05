@@ -3,9 +3,10 @@ package net.xiaoyu233.mitemod.miteite.trans.world;
 import net.minecraft.*;
 import net.xiaoyu233.fml.util.ReflectHelper;
 import net.xiaoyu233.mitemod.miteite.entity.*;
-import net.xiaoyu233.mitemod.miteite.trans.entity.EntityGiantZombieTrans;
+import net.xiaoyu233.mitemod.miteite.world.BiomeBases;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -15,7 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Mixin(BiomeBase.class)
-public class BiomeBaseTrans {
+public class BiomeBaseTrans{
+
+   @Shadow
+   protected WorldGenBigTree worldGeneratorBigTree;
    @Shadow
    @Final
    public final int biomeID;
@@ -48,13 +52,23 @@ public class BiomeBaseTrans {
    @Shadow
    protected List spawnableWaterCreatureList;
    @Shadow
-   protected WorldGenBigTree worldGeneratorBigTree;
-   @Shadow
    protected WorldGenForest worldGeneratorForest;
    @Shadow
    protected WorldGenSwampTree worldGeneratorSwamp;
    @Shadow
    protected WorldGenTrees worldGeneratorTrees;
+   @Shadow
+   protected BiomeBase setBiomeName(String par1Str) {
+      return null;
+   }
+
+   public WorldGenBigTree getWorldGeneratorBigTree() {
+      return worldGeneratorBigTree;
+   }
+
+   public BiomeBase setBiomeNameC(String par1Str) {
+      return this.setBiomeName(par1Str);
+   }
 
    protected BiomeBaseTrans(int par1) {
       this.topBlock = (byte)Block.grass.blockID;
@@ -109,6 +123,13 @@ public class BiomeBaseTrans {
       this.spawnableMonsterList.add(new BiomeMeta(EntityPhaseSpider.class, 5, 1, 4));
    }
 
+   @Overwrite
+   public boolean isHillyOrMountainous() {
+      return ReflectHelper.dyCast(this) == BiomeBase.extremeHills || ReflectHelper.dyCast(this) == BiomeBase.iceMountains || ReflectHelper.dyCast(this) == BiomeBase.desertHills || ReflectHelper.dyCast(this) == BiomeBase.forestHills
+              || ReflectHelper.dyCast(this) == BiomeBase.taigaHills || ReflectHelper.dyCast(this) == BiomeBase.extremeHillsEdge || ReflectHelper.dyCast(this) == BiomeBase.jungleHills
+              || ReflectHelper.dyCast(this) == BiomeBases.volcano;
+   }
+
    @Inject(method = "<init>",at = @At("RETURN"))
    private void injectInit(CallbackInfo callbackInfo){
       this.spawnableMonsterList.add(new BiomeMeta(EntityGiantZombie.class, 10, 1, 1));
@@ -122,9 +143,10 @@ public class BiomeBaseTrans {
       this.spawnableMonsterList.add(new BiomeMeta(EntityExchanger.class, 2,1, 1));
       this.spawnableMonsterList.add(new BiomeMeta(EntityMirrorSkeleton.class, 5,1, 1));
    }
-
    @Shadow
-   private BiomeDecorator createBiomeDecorator() {
+   protected BiomeDecorator createBiomeDecorator() {
       return null;
    }
+
+
 }

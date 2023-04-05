@@ -1,6 +1,5 @@
 package net.xiaoyu233.mitemod.miteite.trans;
 
-import net.minecraft.BlockHay;
 import net.minecraft.EnumChatFormat;
 import net.minecraft.Minecraft;
 import net.minecraft.client.main.Main;

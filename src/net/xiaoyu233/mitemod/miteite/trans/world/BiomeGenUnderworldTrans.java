@@ -2,7 +2,6 @@ package net.xiaoyu233.mitemod.miteite.trans.world;
 
 import net.minecraft.*;
 import net.xiaoyu233.mitemod.miteite.entity.*;
-//import net.xiaoyu233.mitemod.miteite.entity.EntityThunderMan;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

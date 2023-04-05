@@ -1,17 +1,16 @@
 package net.xiaoyu233.mitemod.miteite.trans.render;
 
-import net.minecraft.*;
+import net.minecraft.Entity;
+import net.minecraft.bgl;
+import net.minecraft.bgm;
 import net.xiaoyu233.mitemod.miteite.entity.EntityAncientDragon;
 import net.xiaoyu233.mitemod.miteite.entity.EntityAnnihilationSkeleton;
-import net.xiaoyu233.mitemod.miteite.entity.EntitySpiderQueen;
-//import net.xiaoyu233.mitemod.miteite.entity.EntityThunderMan;
 import net.xiaoyu233.mitemod.miteite.entity.EntitySpiderQueen;
 import net.xiaoyu233.mitemod.miteite.entity.EntityWanderingWitch;
 import net.xiaoyu233.mitemod.miteite.render.entity.RenderAncientDragon;
 import net.xiaoyu233.mitemod.miteite.render.entity.RenderAnnihilationSkeleton;
-//import net.xiaoyu233.mitemod.miteite.render.entity.RenderEntityThunderMan;
-import net.xiaoyu233.mitemod.miteite.render.entity.RenderWanderingWitch;
 import net.xiaoyu233.mitemod.miteite.render.entity.RenderSpiderQueen;
+import net.xiaoyu233.mitemod.miteite.render.entity.RenderWanderingWitch;
 import net.xiaoyu233.mitemod.miteite.util.ReflectHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

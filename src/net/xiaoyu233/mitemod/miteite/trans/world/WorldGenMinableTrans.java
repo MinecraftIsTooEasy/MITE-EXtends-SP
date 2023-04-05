@@ -1,13 +1,9 @@
 package net.xiaoyu233.mitemod.miteite.trans.world;
 
 import net.minecraft.*;
-import net.xiaoyu233.mitemod.miteite.block.Blocks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Random;
 
@@ -15,8 +11,53 @@ import java.util.Random;
 public class WorldGenMinableTrans {
    @Shadow
    private int minableBlockId;
-
+//   @Shadow
+//   private int minable_block_metadata;
+//   @Shadow
+//   private int blockToReplace;
+//
 //   @Overwrite
+//   public int growVein(World world, Random rand, int blocks_to_grow, int x, int y, int z, boolean must_be_supported, boolean is_dirt) {
+//      if (blocks_to_grow >= 1 && world.blockExists(x, y, z) && world.getBlockId(x, y, z) == this.blockToReplace) {
+//         if (must_be_supported && (y < 1 || world.isAirOrPassableBlock(x, y - 1, z, true))) {
+//            return 0;
+//         } else {
+//            if (is_dirt && world.canBlockSeeTheSky(x, y + 1, z)) {
+//               BiomeBase biome = world.getBiomeGenForCoords(x, z);
+//               world.setBlock(x, y, z, biome != BiomeBase.desert && biome != BiomeBase.desertHills ? Block.grass.blockID : Block.sand.blockID, 0, 2);
+//               world.setBlock(x, y, z, biome != BiomeBases.volcano ? Block.anvilAdamantium.blockID : Block.sand.blockID, 0, 2);
+//            } else {
+//               world.setBlock(x, y, z, this.minableBlockId, this.minable_block_metadata, 2);
+//            }
+//
+//            int ore_blocks_grown = 1;
+//
+//            for(int attempts = 0; attempts < 16; ++attempts) {
+//               int dx = 0;
+//               int dy = 0;
+//               int dz = 0;
+//               int axis = rand.nextInt(3);
+//               if (axis == 0) {
+//                  dx = rand.nextInt(2) == 0 ? -1 : 1;
+//               } else if (axis == 1) {
+//                  dy = rand.nextInt(2) == 0 ? -1 : 1;
+//               } else {
+//                  dz = rand.nextInt(2) == 0 ? -1 : 1;
+//               }
+//
+//               ore_blocks_grown += this.growVein(world, rand, blocks_to_grow - ore_blocks_grown, x + dx, y + dy, z + dz, must_be_supported, is_dirt);
+//               if (ore_blocks_grown == blocks_to_grow) {
+//                  break;
+//               }
+//            }
+//
+//            return ore_blocks_grown;
+//         }
+//      } else {
+//         return 0;
+//      }
+//   }
+
    @Overwrite
    public int getRandomVeinHeight(World world, Random rand) {
       Block block = Block.blocksList[this.minableBlockId];

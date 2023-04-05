@@ -2,7 +2,6 @@ package net.xiaoyu233.mitemod.miteite.trans.entity;
 
 import net.minecraft.DamageSource;
 import net.minecraft.EntityInfernalCreeper;
-import net.minecraft.Item;
 import net.minecraft.World;
 import net.xiaoyu233.mitemod.miteite.item.Items;
 import net.xiaoyu233.mitemod.miteite.util.Configs;

@@ -11,6 +11,8 @@ import static net.xiaoyu233.mitemod.miteite.util.WorldUtil.isBloodMoonDay;
 
 @Mixin(World.class)
 public abstract class WorldTrans {
+   @Shadow public abstract boolean blockExists(int par1, int par2, int par3);
+
    @Shadow public abstract ChunkCoordinates getSpawnPoint();
 
    @Shadow public static int getDayOfWorld(long unadjusted_tick){
@@ -25,6 +27,25 @@ public abstract class WorldTrans {
    public WorldData worldInfo;
    @Shadow
    protected Set activeChunkSet;
+   @Shadow
+   public BiomeBase getBiomeGenForCoords(int par1, int par2) {
+      return null;
+   }
+   @Shadow
+   public final int getBlockId(int par1, int par2, int par3) {
+      return 1;
+   }
+
+//   public final boolean AshesAt(int par1, int par2, int par3) {
+//      BiomeBase biome = this.getBiomeGenForCoords(par1, par3);
+//      if (biome == BiomeBases.volcano && par2 >= 0 && par2 < 256) {
+//         int blockId = this.getBlockId(par1, par2, par3);
+//         Block block = Block.getBlock(blockId);
+//         return block == Block.waterStill || block == Block.waterMoving;
+//      }
+//      return false;
+//   }
+
 
    @Overwrite
    public static boolean isBloodMoon(long unadjustedTick, boolean exclusivelyAtNight) {

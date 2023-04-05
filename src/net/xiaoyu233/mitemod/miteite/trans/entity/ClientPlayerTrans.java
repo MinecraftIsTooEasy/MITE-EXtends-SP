@@ -8,7 +8,6 @@ import net.xiaoyu233.mitemod.miteite.item.Materials;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(bex.class)
 public abstract class ClientPlayerTrans extends beu {

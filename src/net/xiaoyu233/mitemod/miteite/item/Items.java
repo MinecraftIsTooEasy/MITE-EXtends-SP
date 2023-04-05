@@ -82,6 +82,7 @@ public class Items extends Item{
     public static final ItemPickaxe enchantPickaxe = createInstance(ItemPickaxe.class,new Class[]{int.class,Material.class},Constant.getNextItemID(), Materials.enchant);
     public static final ItemSword enchantSword = createInstance(ItemSword.class,new Class[]{int.class,Material.class},Constant.getNextItemID(), Materials.enchant);
     public static final Item enchantStick = createInstance(Item.class,new Class[]{int.class,Material.class,String.class},Constant.getNextItemID(), Materials.enchant, "enchant_stick");
+    public static final Item enchantSRC = createInstance(Item.class,new Class[]{int.class,Material.class,String.class},Constant.getNextItemID(), Materials.enchant, "enchant_src").setXPReward(80);
 
     private static Item register(String resourceLocation, Item item, CreativeModeTab tab) {
         item.setResourceLocation(item.getResourceLocationPrefix() + resourceLocation);
@@ -236,6 +237,7 @@ public class Items extends Item{
         register("enchant_nugget", enchantNugget);
         register("enchant_stick", enchantStick);
         register("enchant_pickaxe", enchantPickaxe);
+        register("enchant_src", enchantSRC, CreativeModeTab.tabMaterials);
         //register("china_fu", chinaFu);
         //register("padding", itemPadding);
 
@@ -243,6 +245,12 @@ public class Items extends Item{
     }
 
     public static void registerRecipes(RecipeRegister register) {
+        register.registerShapelessRecipe(new ItemStack(enchantSRC), true,
+                new ItemStack(Item.appleGold,1,1), Item.ingotAncientMetal, Item.expBottle, voucherCore);
+        RecipesFurnace.smelting().addSmelting(enchantSRC.itemID, new ItemStack(enchantIngot));
+
+        register.registerShapelessRecipe(new ItemStack(infinityingot), true,
+                voucherZombieBoss, VIBRANIUM_INGOT, voucherClubCore, voucherZombieBoss, voucherClubCore);
         register.registerShapelessRecipe(new ItemStack(Blocks.blockLantern, 1), true,Blocks.torchWood, ironNugget, ironNugget, ironNugget, ironNugget, ironNugget, ironNugget, ironNugget, ironNugget);
         register.registerShapelessRecipe(new ItemStack(Items.voucherCore, 1), true, Items.voucherAnnihilationSkeleton, Items.voucherDoor, Items.voucherExchanger, Items.voucherPigman, Items.voucherZombieLord, Items.voucherWitch);
         register.registerShapedRecipe(new ItemStack(clubCopper, 1), true, new Object[]{"###", "#*#"," # ", '#', Items.copperNugget , '*', Items.ingotCopper});
@@ -287,6 +295,7 @@ public class Items extends Item{
             register.registerShapedRecipe(new ItemStack(ringKillerVibranium, 1), true, new Object[]{"###", "#*#","###", '#', VIBRANIUM_SWORD , '*', Items.ringKillerAdamantium});
             register.registerShapedRecipe(new ItemStack(ringKillerInfinity, 1), true, new Object[]{"###", "#*#","###", '#', infinitySword, '*', Items.ringKillerVibranium});
         }
+
 
         register.registerShapelessRecipe(new ItemStack(endBook), true, new Object[]{Block.enderChest, Item.book});
         register.registerShapedRecipe(new ItemStack(infinitySword), true,

@@ -20,10 +20,11 @@ public class Enchantments {
     public static final Enchantment BEHEADING = new EnchantmentBeheading(getNextEnchantmentID(),yq.c,10);
     public static final Enchantment enchantmentFixed = new EnchantmentFixed(getNextEnchantmentID(), yq.c,15);
     public static final Enchantment enchantmentChain = new EnchantmentChain(getNextEnchantmentID(), yq.d,30);
+    public static final Enchantment enchantmentRangeAttack = new EnchantmentRangeAttack(getNextEnchantmentID(), yq.d,30);
     public static final Enchantment EnchantmentForge = new EnchantmentForge(Enchantments.getNextEnchantmentID(), yq.c, 10);
     public static List<Enchantment> individualEnchantments = new ArrayList<>();
     public static void registerEnchantments(){
-        Enchantments.registerEnchantmentsUnsafe(enchantmentFixed, CRIT, EXTEND, EMERGENCY, CONQUEROR, BEHEADING, enchantmentChain, EnchantmentForge);
+        Enchantments.registerEnchantmentsUnsafe(enchantmentFixed, CRIT, EXTEND, EMERGENCY, CONQUEROR, BEHEADING, enchantmentChain, EnchantmentForge, enchantmentRangeAttack);
     }
 
     public static void registerEnchantmentsUnsafe(Enchantment... enchantments) {

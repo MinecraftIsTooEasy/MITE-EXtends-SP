@@ -2,7 +2,6 @@ package net.xiaoyu233.mitemod.miteite.trans.world;
 
 import net.minecraft.*;
 import net.minecraft.client.main.Main;
-import net.xiaoyu233.mitemod.miteite.entity.EntityZombieBoss;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

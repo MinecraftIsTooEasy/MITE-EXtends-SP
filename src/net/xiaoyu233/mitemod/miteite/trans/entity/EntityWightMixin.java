@@ -3,9 +3,7 @@ package net.xiaoyu233.mitemod.miteite.trans.entity;
 import net.minecraft.DamageSource;
 import net.minecraft.EntityWight;
 import net.minecraft.ItemStack;
-import net.minecraft.ItemTool;
 import net.xiaoyu233.mitemod.miteite.item.ItemInfinitySword;
-import net.xiaoyu233.mitemod.miteite.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 

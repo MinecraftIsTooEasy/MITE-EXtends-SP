@@ -6,7 +6,6 @@ import net.minecraft.Block;
 import net.minecraft.World;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 
 import java.util.Random;
 @Mixin(BiomeRiver.class)

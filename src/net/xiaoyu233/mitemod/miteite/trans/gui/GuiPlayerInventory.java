@@ -11,9 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 @Mixin(axv.class)
 public class GuiPlayerInventory extends axp {

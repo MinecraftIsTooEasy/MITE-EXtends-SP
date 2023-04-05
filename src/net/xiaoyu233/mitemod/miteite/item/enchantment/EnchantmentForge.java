@@ -1,11 +1,6 @@
 package net.xiaoyu233.mitemod.miteite.item.enchantment;
 
-import net.minecraft.CreativeModeTab;
-import net.minecraft.Enchantment;
-import net.minecraft.Item;
-import net.minecraft.ItemAxe;
-import net.minecraft.ItemWarHammer;
-import net.minecraft.yq;
+import net.minecraft.*;
 
 public class EnchantmentForge
         extends Enchantment {

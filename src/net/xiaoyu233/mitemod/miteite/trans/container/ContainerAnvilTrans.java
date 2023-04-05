@@ -3,21 +3,14 @@ package net.xiaoyu233.mitemod.miteite.trans.container;
 import net.minecraft.*;
 import net.xiaoyu233.mitemod.miteite.item.Materials;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
-import net.xiaoyu233.mitemod.miteite.util.ReflectHelper;
-//import org.apache.commons.lang3.StringUtils;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.Slice;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.Iterator;
-import java.util.Map;
 
 @Mixin(ContainerAnvil.class)
 public class ContainerAnvilTrans extends Container {

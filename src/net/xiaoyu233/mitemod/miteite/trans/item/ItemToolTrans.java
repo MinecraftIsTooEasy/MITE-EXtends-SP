@@ -6,7 +6,6 @@ import net.xiaoyu233.mitemod.miteite.item.IUpgradableItem;
 import net.xiaoyu233.mitemod.miteite.item.Materials;
 import net.xiaoyu233.mitemod.miteite.item.ModifierUtils;
 import net.xiaoyu233.mitemod.miteite.item.ToolModifierTypes;
-import net.xiaoyu233.mitemod.miteite.item.enchantment.Enchantments;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
 import net.xiaoyu233.mitemod.miteite.util.ReflectHelper;
 import net.xiaoyu233.mitemod.miteite.util.StringUtil;

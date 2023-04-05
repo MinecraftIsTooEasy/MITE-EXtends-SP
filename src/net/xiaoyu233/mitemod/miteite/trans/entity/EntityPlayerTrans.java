@@ -250,10 +250,7 @@ public abstract class EntityPlayerTrans extends EntityLiving implements ICommand
 
          ItemStack heldItemStack = this.getHeldItemStack();
 
-         if(heldItemStack.getItem() != null
-                 && heldItemStack.getItem().itemID == Items.infinitySword.itemID
-         ){
-            //System.out.println("infinitysword");
+         if(EnchantmentManager.hasEnchantment(heldItemStack, Enchantments.enchantmentRangeAttack)){
             List<Entity> targets  = this.getNearbyEntities(30, 30);
             if(targets.size() > 0) {
                this.attackMonsters(targets);
