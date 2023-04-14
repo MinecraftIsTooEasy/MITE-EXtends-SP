@@ -1,10 +1,15 @@
 # MITE-EXtends-SP更新日志
 ## 从v1.1.8至v1.2.2的材质由LITE和whscqngsd提供，v1.3.0以后材质均由whscqngsd制作
-## v1.3.0以后的版本由Rizur/Kalsey或whscqngsd更新
 # iceLee于v1.3.0结束更新,专注于MITE-ITF和MITE-Hydroxide
 
+`
+## v1.4.0-fix
+### bug
+* 修复了偶尔崩溃的bug
+### 优化
+* 优化了世界的创建
 
-
+---
 
 ## v1.4.0-plus
 ### 物品

@@ -70,28 +70,16 @@ public class BiomeVolcano extends BiomeBase {
         int x;
         int y;
         int z;
+        WorldGenMinable genMinableWaterMoving = new WorldGenMinable(Blocks.volcanoAshes.blockID, 100000, Block.waterMoving.blockID);
+        WorldGenMinable genMinableWater = new WorldGenMinable(Blocks.volcanoAshes.blockID, 100000, Block.waterStill.blockID);
         WorldGenMinable genMinableSand = new WorldGenMinable(Blocks.volcanoSand.blockID, 100000, Block.sand.blockID);
         for (temp = 0; temp < 200000; ++temp) {
             x = par3 + par2Random.nextInt(16);
             y = par2Random.nextInt(128);
             z = par4 + par2Random.nextInt(16);
+            genMinableWater.generate(par1World, par2Random, x, 62, z);
+            genMinableWaterMoving.generate(par1World, par2Random, x, y, z);
             genMinableSand.generate(par1World, par2Random, x, y, z);
-        }
-
-        WorldGenMinable genMinableWaterd = new WorldGenMinable(Blocks.volcanoAshes.blockID, 100000, Block.waterMoving.blockID);
-        for (temp = 0; temp < 200000; ++temp) {
-            x = par3 + par2Random.nextInt(16);
-            y = par2Random.nextInt(128);
-            z = par4 + par2Random.nextInt(16);
-            genMinableWaterd.generate(par1World, par2Random, x, y, z);
-        }
-
-        WorldGenMinable genMinableWater = new WorldGenMinable(Blocks.volcanoAshes.blockID, 100000, Block.waterStill.blockID);
-        for (temp = 0; temp < 200000; ++temp) {
-            x = par3 + par2Random.nextInt(16);
-            y = par2Random.nextInt(128);
-            z = par4 + par2Random.nextInt(16);
-            genMinableWater.generate(par1World, par2Random, x, y, z);
         }
 
         WorldGenMinable genMinableBlock = new WorldGenMinable(Blocks.volcanoStone.blockID, 100, Block.stone.blockID);
