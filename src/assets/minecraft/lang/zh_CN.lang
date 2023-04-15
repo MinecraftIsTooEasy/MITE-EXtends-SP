@@ -176,3 +176,6 @@ item.zombieboss.name=僵尸BOSS凭证
 item.ghast.name=恶魂凭证
 item.bedrock.name=基岩凭证
 item.vibraniumdoor.name=僵尸盗贼领主凭证
+
+item.tooltip.price=购价
+item.tooltip.soldprice=售价

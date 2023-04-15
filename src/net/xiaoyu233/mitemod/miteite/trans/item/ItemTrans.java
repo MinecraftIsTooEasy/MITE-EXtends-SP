@@ -49,6 +49,38 @@ public abstract class ItemTrans {
    private void ItemInject(int par1, String texture, int num_subtypes, CallbackInfo callbackInfo) {
       ReflectHelper.dyCast(Item.class,this).recipes = new aah[500];
    }
+//   @Overwrite
+//   public void addInformation(ItemStack item_stack, EntityPlayer player, List info, boolean extended_info, Slot slot) {
+//      if (this.soldPrice > 0) {
+//         info.add(EnumChatFormat.RED + Translator.getFormatted(String.valueOf(this.soldPrice)));
+//      }
+//      if (this.price > 0) {
+//         info.add(EnumChatFormat.RED + Translator.getFormatted("item.tooltip.price", new Object[(int) this.price]));
+//      }
+//      if (extended_info) {
+//         int satiation = this.getSatiation(player);
+//         int nutrition = this.getNutrition();
+//         if (this.satiation > 0 || nutrition > 0) {
+//            info.add("");
+//            if (ReflectHelper.dyCast(this) instanceof ItemBlock) {
+//               ItemBlock item_block = (ItemBlock)ReflectHelper.dyCast(this);
+//               if (item_block.getBlock() == Block.mushroomRed) {
+//                  info.add(EnumChatFormat.RED + Translator.getFormatted("item.tooltip.satiation", new Object[]{satiation}));
+//                  info.add(EnumChatFormat.RED + Translator.getFormatted("item.tooltip.nutrition", new Object[]{nutrition}));
+//                  return;
+//               }
+//            }
+//
+//            if (this.satiation > 0) {
+//               info.add((this.sugar_content > 0 && player.isInsulinResistant() ? player.getInsulinResistanceLevel().getColor_() : EnumChatFormat.BROWN) + Translator.getFormatted("item.tooltip.satiation", new Object[]{satiation}));
+//            }
+//
+//            if (nutrition > 0) {
+//               info.add(EnumChatFormat.BROWN + Translator.getFormatted("item.tooltip.nutrition", new Object[]{nutrition}));
+//            }
+//         }
+//      }
+//   }
 
    // 在本mod进行引用 否则会造成无法找到方法的异常
    public Item setItemPrice(double price) {
@@ -59,6 +91,14 @@ public abstract class ItemTrans {
    public Item setPrice(double price) {
       this.price = price;
       return (Item) ReflectHelper.dyCast(this);
+   }
+
+   public boolean hasPrice(){
+      return this.price > 0;
+   }
+
+   public boolean hasSoldPrice(){
+      return this.soldPrice > 0;
    }
 
    public double getPrice() {
@@ -256,6 +296,16 @@ public abstract class ItemTrans {
    public void setCreativeTable(CreativeModeTab table) {
       this.setCreativeTab(table);
    }
+   @Shadow
+   public final int getSatiation(EntityPlayer player) {
+      return 1;
+   }
+   @Shadow
+   public int getNutrition() {
+      return 1;
+   }
+   @Shadow
+   private int satiation;
 
    @Shadow
    public Item setMaxStackSize(int maxStackSize) {

@@ -3,10 +3,8 @@ package net.xiaoyu233.mitemod.miteite.trans.world;
 import net.minecraft.*;
 import net.xiaoyu233.fml.util.ReflectHelper;
 import net.xiaoyu233.mitemod.miteite.entity.*;
-import net.xiaoyu233.mitemod.miteite.world.BiomeBases;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -123,12 +121,12 @@ public class BiomeBaseTrans{
       this.spawnableMonsterList.add(new BiomeMeta(EntityPhaseSpider.class, 5, 1, 4));
    }
 
-   @Overwrite
-   public boolean isHillyOrMountainous() {
-      return ReflectHelper.dyCast(this) == BiomeBase.extremeHills || ReflectHelper.dyCast(this) == BiomeBase.iceMountains || ReflectHelper.dyCast(this) == BiomeBase.desertHills || ReflectHelper.dyCast(this) == BiomeBase.forestHills
-              || ReflectHelper.dyCast(this) == BiomeBase.taigaHills || ReflectHelper.dyCast(this) == BiomeBase.extremeHillsEdge || ReflectHelper.dyCast(this) == BiomeBase.jungleHills
-              || ReflectHelper.dyCast(this) == BiomeBases.volcano;
-   }
+//   @Overwrite
+//   public boolean isHillyOrMountainous() {
+//      return ReflectHelper.dyCast(this) == BiomeBase.extremeHills || ReflectHelper.dyCast(this) == BiomeBase.iceMountains || ReflectHelper.dyCast(this) == BiomeBase.desertHills || ReflectHelper.dyCast(this) == BiomeBase.forestHills
+//              || ReflectHelper.dyCast(this) == BiomeBase.taigaHills || ReflectHelper.dyCast(this) == BiomeBase.extremeHillsEdge || ReflectHelper.dyCast(this) == BiomeBase.jungleHills
+//              || ReflectHelper.dyCast(this) == BiomeBases.volcano;
+//   }
 
    @Inject(method = "<init>",at = @At("RETURN"))
    private void injectInit(CallbackInfo callbackInfo){

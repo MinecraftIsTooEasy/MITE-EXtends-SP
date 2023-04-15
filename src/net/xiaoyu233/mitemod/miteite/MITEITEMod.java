@@ -30,18 +30,15 @@ public class MITEITEMod extends AbstractMod {
     public static void checkUpdateVer(EntityPlayer player){
         String webVersion = HttpUtilities.performGetRequest("https://lucklong.cn/ExtendVer.txt", 3000, 3000);
         if (webVersion == null){
-            player.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE)
-                    .appendComponent(ChatMessage.createFromTranslationKey("无法检查更新")).setColor(EnumChatFormat.RED));
+            player.sendChatToPlayer(ChatMessage.createFromText("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE)
+                    .appendComponent(ChatMessage.createFromText("无法检查更新")).setColor(EnumChatFormat.RED));
         } else{
-            player.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE)
-                    .appendComponent(ChatMessage.createFromTranslationKey("当前版本: " + Constant.MITE_ITE_VERSION)).setColor(EnumChatFormat.WHITE)
-                    .appendComponent(ChatMessage.createFromTranslationKey("      最新版本: " + webVersion)).setColor(EnumChatFormat.GREEN));
             if (!Constant.MITE_ITE_VERSION.equals(webVersion)) {
-                player.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE)
-                        .appendComponent(ChatMessage.createFromTranslationKey("有新版本可用,请到交流群中下载")).setColor(EnumChatFormat.GREEN));
+                player.sendChatToPlayer(ChatMessage.createFromText("[MITE-EXtends]: ").setColor(EnumChatFormat.WHITE)
+                        .appendComponent(ChatMessage.createFromText("有新版本可用,请到交流群中下载")).setColor(EnumChatFormat.GREEN));
             } else{
-                player.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE)
-                        .appendComponent(ChatMessage.createFromTranslationKey("当前为最新版本")).setColor(EnumChatFormat.GREEN));
+                player.sendChatToPlayer(ChatMessage.createFromText("[MITE-EXtends]: ").setColor(EnumChatFormat.WHITE)
+                        .appendComponent(ChatMessage.createFromText("当前为最新版本")).setColor(EnumChatFormat.GREEN));
             }
         }
 

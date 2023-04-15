@@ -50,21 +50,21 @@ public class Blocks extends Block{
     public static final Block blockStairsColorful10 = new BlockStairsColorful(186, blockColorful, 10);
     public static final Block blockStairsColorful11 = new BlockStairsColorful(187, blockColorful, 11);
     public static final Block blockStairsColorful12 = new BlockStairsColorful(188, blockColorful, 12);
-//    public static final Block blockStairsColorful13 = new BlockStairsColorful(189, blockColorful, 13);
-//    public static final Block blockStairsColorful14 = new BlockStairsColorful(190, blockColorful, 14);
-//    public static final Block blockStairsColorful15 = new BlockStairsColorful(191, blockColorful, 15);
+    public static final Block blockStairsColorful13 = new BlockStairsColorful(189, blockColorful, 13);
+    public static final Block blockStairsColorful14 = new BlockStairsColorful(190, blockColorful, 14);
+    public static final Block blockStairsColorful15 = new BlockStairsColorful(191, blockColorful, 15);
     public static final BlockSpawn blockSpawn = (new BlockSpawn(192, Material.stone));
     public static final Block vibraniumDoor = ReflectHelper.createInstance(BlockDoor.class, new Class[] {int.class,Material.class}
             , 193, Materials.vibranium).setStepSound_(soundMetalFootstep);
-    public static final Block volcanoStone = new BlockVolcanoStone(194);
-    public static final BlockSand volcanoSand = (BlockSand) new BlockSand(195).setBlockHardness(0.4F);
-    public static final Block volcanoCobblestone = ReflectHelper.createInstance(Block.class, new Class[]{int.class, Material.class, BlockConstants.class}, 196, Materials.stone, new BlockConstants())
-            .setCreativeTab(CreativeModeTab.tabBlock).setBlockHardness(2.0F);
-    public static final Block volcanoAshes = ReflectHelper.createInstance(Block.class, new Class[]{int.class, Material.class, BlockConstants.class}, 197, Materials.sand, new BlockConstants())
-            .setCreativeTab(CreativeModeTab.tabBlock).setStepSound_(soundSandFootstep);
-    public static final Block volcanoEmeraldOre = new BlockOre(189, Material.emerald, 3).setBlockHardness(4.0F);
-    public static final Block volcanoMithrilOre = new BlockOre(190, Material.mithril, 3).setBlockHardness(4.0F);
-    public static final Block volcanoDiamondOre = new BlockOre(191, Material.diamond, 3).setBlockHardness(4.0F);
+//    public static final Block volcanoStone = new BlockVolcanoStone(194);
+//    public static final BlockSand volcanoSand = (BlockSand) new BlockSand(195).setBlockHardness(0.4F);
+//    public static final Block volcanoCobblestone = ReflectHelper.createInstance(Block.class, new Class[]{int.class, Material.class, BlockConstants.class}, 196, Materials.stone, new BlockConstants())
+//            .setCreativeTab(CreativeModeTab.tabBlock).setBlockHardness(2.0F);
+//    public static final Block volcanoAshes = ReflectHelper.createInstance(Block.class, new Class[]{int.class, Material.class, BlockConstants.class}, 197, Materials.sand, new BlockConstants())
+//            .setCreativeTab(CreativeModeTab.tabBlock).setStepSound_(soundSandFootstep);
+//    public static final Block volcanoEmeraldOre = new BlockOre(189, Material.emerald, 3).setBlockHardness(4.0F);
+//    public static final Block volcanoMithrilOre = new BlockOre(190, Material.mithril, 3).setBlockHardness(4.0F);
+//    public static final Block volcanoDiamondOre = new BlockOre(191, Material.diamond, 3).setBlockHardness(4.0F);
 
 
 
@@ -112,13 +112,13 @@ public class Blocks extends Block{
 
     public static void registerBlocks(){
 
-        registerItemBlock(volcanoStone,"volcano/volcano_stone");
-        registerItemBlock(volcanoCobblestone,"volcano/volcano_cobble_stone");
-        registerItemBlock(volcanoSand,"volcano/volcano_sand");
-        registerItemBlock(volcanoAshes,"volcano/volcano_ashes");
-        registerItemBlock(volcanoDiamondOre,"volcano/volcano_diamond_ore");
-        registerItemBlock(volcanoMithrilOre,"volcano/volcano_mithril_ore");
-        registerItemBlock(volcanoEmeraldOre,"volcano/volcano_emerald_ore");
+//        registerItemBlock(volcanoStone,"volcano/volcano_stone");
+//        registerItemBlock(volcanoCobblestone,"volcano/volcano_cobble_stone");
+//        registerItemBlock(volcanoSand,"volcano/volcano_sand");
+//        registerItemBlock(volcanoAshes,"volcano/volcano_ashes");
+//        registerItemBlock(volcanoDiamondOre,"volcano/volcano_diamond_ore");
+//        registerItemBlock(volcanoMithrilOre,"volcano/volcano_mithril_ore");
+//        registerItemBlock(volcanoEmeraldOre,"volcano/volcano_emerald_ore");
 
 
         registerItemBlock(vibraniumDoor,"door_vibranium");
@@ -152,9 +152,9 @@ public class Blocks extends Block{
         registerItemBlock(blockStairsColorful10, "colorful_stair");
         registerItemBlock(blockStairsColorful11, "colorful_stair");
         registerItemBlock(blockStairsColorful12, "colorful_stair");
-//        registerItemBlock(blockStairsColorful13, "colorful_stair");
-//        registerItemBlock(blockStairsColorful14, "colorful_stair");
-//        registerItemBlock(blockStairsColorful15, "colorful_stair");
+        registerItemBlock(blockStairsColorful13, "colorful_stair");
+        registerItemBlock(blockStairsColorful14, "colorful_stair");
+        registerItemBlock(blockStairsColorful15, "colorful_stair");
 
 
     }
@@ -170,7 +170,7 @@ public class Blocks extends Block{
     }
 
     public static void registerRecipes(RecipeRegister register) {
-        register.registerShapelessRecipe(new ItemStack(blockStairsColorful0, 9), true, new ItemStack(blockStairsColorful12, 9));
+        register.registerShapelessRecipe(new ItemStack(blockStairsColorful0, 9), true, new ItemStack(blockStairsColorful15, 9));
         register.registerShapelessRecipe(new ItemStack(blockStairsColorful1, 9), true, new ItemStack(blockStairsColorful0, 9));
         register.registerShapelessRecipe(new ItemStack(blockStairsColorful2, 9), true, new ItemStack(blockStairsColorful1, 9));
         register.registerShapelessRecipe(new ItemStack(blockStairsColorful3, 9), true, new ItemStack(blockStairsColorful2, 9));
@@ -183,9 +183,9 @@ public class Blocks extends Block{
         register.registerShapelessRecipe(new ItemStack(blockStairsColorful10, 9), true, new ItemStack(blockStairsColorful9, 9));
         register.registerShapelessRecipe(new ItemStack(blockStairsColorful11, 9), true, new ItemStack(blockStairsColorful10, 9));
         register.registerShapelessRecipe(new ItemStack(blockStairsColorful12, 9), true, new ItemStack(blockStairsColorful11, 9));
-//        register.registerShapelessRecipe(new ItemStack(blockStairsColorful13, 9), true, new ItemStack(blockStairsColorful12, 9));
-//        register.registerShapelessRecipe(new ItemStack(blockStairsColorful14, 9), true, new ItemStack(blockStairsColorful13, 9));
-//        register.registerShapelessRecipe(new ItemStack(blockStairsColorful15, 9), true, new ItemStack(blockStairsColorful14, 9));
+        register.registerShapelessRecipe(new ItemStack(blockStairsColorful13, 9), true, new ItemStack(blockStairsColorful12, 9));
+        register.registerShapelessRecipe(new ItemStack(blockStairsColorful14, 9), true, new ItemStack(blockStairsColorful13, 9));
+        register.registerShapelessRecipe(new ItemStack(blockStairsColorful15, 9), true, new ItemStack(blockStairsColorful14, 9));
 
         for(int i = 0; i < 15; ++i) {
             register.registerShapelessRecipe(new ItemStack(blockGotcha, 1, i + 1), true, new ItemStack(blockGotcha, 1, i));

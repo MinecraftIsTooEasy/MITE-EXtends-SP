@@ -2,7 +2,6 @@ package net.xiaoyu233.mitemod.miteite.trans.world;
 
 import net.minecraft.*;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
-import net.xiaoyu233.mitemod.miteite.world.BiomeBases;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -48,7 +47,7 @@ public class BiomeDecoratorTrans {
 
    protected void generateOres() {
       if (this.currentWorld.isOverworld()) {
-         if(!(this.currentWorld.getBiomeGenForCoords(chunk_X, chunk_Z) == BiomeBases.volcano)){
+         //if(!(this.currentWorld.getBiomeGenForCoords(chunk_X, chunk_Z) == BiomeBases.volcano)){
             this.genMinable(200, this.dirtGen);
             this.genMinable(200, this.gravelGen);
             this.genMinable(50, this.coalGen);
@@ -63,7 +62,7 @@ public class BiomeDecoratorTrans {
             this.genMinable(LAPIS_FREQUENCY_OVERWORLD, this.lapisGen);
             if (Configs.wenscConfig.overworldAdamantiteOre.ConfigValue) {
                this.genMinable(ADAMANTIUM_FREQUENCY_OVERWORLD, this.adamantiteGen, false);
-            }
+           // }
          }
 //         else {
 //            this.genMinable(20, this.volcanoEmeraldGen, true);
