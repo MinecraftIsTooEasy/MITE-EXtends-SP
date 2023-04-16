@@ -246,7 +246,7 @@ public class Items extends Item{
 
     public static void registerRecipes(RecipeRegister register) {
         register.registerShapelessRecipe(new ItemStack(enchantSRC), true,
-                new ItemStack(Item.appleGold,1,1), Item.ingotAncientMetal, Item.expBottle, voucherCore);
+                new ItemStack(Item.appleGold,1,1), Item.ingotAncientMetal, Item.expBottle, voucherFishing, VIBRANIUM_INGOT);
         RecipesFurnace.smelting().addSmelting(enchantSRC.itemID, new ItemStack(enchantIngot));
 
         register.registerShapelessRecipe(new ItemStack(infinityingot), true,
@@ -316,7 +316,7 @@ public class Items extends Item{
 
             register.registerShapelessRecipe(new ItemStack(coin), true, new Object[]{new ItemStack(coin.getNuggetPeer())});
         }
-        
+
         register.registerShapedRecipe(new ItemStack(enchantStick),
                 false,
                 "  I",

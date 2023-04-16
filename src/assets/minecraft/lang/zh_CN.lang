@@ -179,3 +179,5 @@ item.vibraniumdoor.name=僵尸盗贼领主凭证
 
 item.tooltip.price=购价
 item.tooltip.soldprice=售价
+item.tooltip.ID=ID
+item.tooltip.SUB=Sub

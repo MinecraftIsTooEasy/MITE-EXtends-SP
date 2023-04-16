@@ -34,44 +34,36 @@ public class CommandEXtend extends CommandAbstract {
     @Override
     public void processCommand(ICommandListener iCommandListener, String[] strings) {
         EntityPlayer player = getCommandSenderAsPlayer(iCommandListener);
-        //Item heldItem = player.getHeldItemStack().getItem();
         if (strings[0].equals("generatePrice")) {
             try {
-                File file = new File("price.txt");
+                File file = new File("allPrice.txt");
+                if (file.delete()){
+                    player.sendChatToPlayer(ChatMessage.createFromText("正在删除已有价格表").setColor(EnumChatFormat.RED));
+                }
                 FileWriter fileWritter = new FileWriter(file.getName(), true);
-                for (Item item : Item.itemsList) {
-                    if (item != null && item.hasPrice()) {
-                        if (file.exists()) {
-                            if (item instanceof ItemBlock) {
-                                fileWritter.write(((ItemBlock) item).getBlock().getLocalizedName() + " 售价: " + item.getSoldPrice() + " 购价: " + item.getPrice() + " ID: " + ((ItemBlock) item).getBlockID() + "\n\n");
-//                                fileWritter.write(item.getUnlocalizedName() + "=" + item.getSoldPrice() + "," + item.getPrice() + "\n\n");
-                            } else {
-                                fileWritter.write(item.getItemDisplayName() + " 售价: " + item.getSoldPrice() + " 购价: " + item.getPrice() + " ID: " + item.itemID + "\n\n");
-//                                fileWritter.write(item.getUnlocalizedName() + "=" + item.getSoldPrice() + "," + item.getPrice() + "\n\n");
+                if (file.exists()) {
+                    for (Item item : Item.itemsList) {
+                        if (item != null && item.hasPrice() || item != null && item.hasSoldPrice()) {
+                            try {
+                                if (item instanceof ItemBlock) {
+                                    fileWritter.write(((ItemBlock) item).getBlock().getLocalizedName() + " 售价: " + item.getSoldPrice() + " 购价: " + item.getPrice() + " ID: " + ((ItemBlock) item).getBlockID() + "\n\n");
+                                } else {
+                                    fileWritter.write(item.getItemDisplayName() + " 售价: " + item.getSoldPrice() + " 购价: " + item.getPrice() + " ID: " + item.itemID + "\n\n");
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
                         }
                     }
                 }
-                player.sendChatToPlayer(ChatMessage.createFromText("[MITE-EXtends]: ").setColor(EnumChatFormat.BLUE)
-                        .appendComponent(ChatMessage.createFromText("生成并打开价格表")));
                 fileWritter.close();
-                try {
-                    Desktop.getDesktop().open(file);
-                } catch (IOException | NullPointerException e) {
+                player.sendChatToPlayer(ChatMessage.createFromText("生成并打开价格表").setColor(EnumChatFormat.BLUE));
+                Desktop.getDesktop().open(file);
+                } catch (IOException e) {
                     e.printStackTrace();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-//        }
-//        else if (strings[0].equals("setPrice")) {
-//            heldItem.setPrice(Integer.valueOf(strings[1]));
-//            player.chat;
-//            player.sendChatToPlayer(ChatMessage.createFromText("[MITE-EXtends]: ").setColor(EnumChatFormat.BLUE)
-//                    .appendComponent(ChatMessage.createFromText("手中物品购价为" + strings[1])));
         } else {
-            player.sendChatToPlayer(ChatMessage.createFromText("[MITE-EXtends]: ").setColor(EnumChatFormat.BLUE)
-                    .appendComponent(ChatMessage.createFromText("指令不存在咯")));
+            player.sendChatToPlayer(ChatMessage.createFromText("指令不存在咯").setColor(EnumChatFormat.RED));
         }
     }
 }

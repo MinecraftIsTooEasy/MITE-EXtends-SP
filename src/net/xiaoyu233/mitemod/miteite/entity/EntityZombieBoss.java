@@ -239,6 +239,9 @@ public class EntityZombieBoss extends EntityZombie {
                 if(target != null && target instanceof EntityPlayer) {
                     if(((EntityPlayer) target).isAttackByBossCounter <= 0) {
                         addThunderAttack((EntityPlayer)target, 10f);
+                        if(this.rand.nextInt(10) == 0){
+                            this.setDead();
+                        }
                     }
                 }
                 if(thunderTick == 60) {

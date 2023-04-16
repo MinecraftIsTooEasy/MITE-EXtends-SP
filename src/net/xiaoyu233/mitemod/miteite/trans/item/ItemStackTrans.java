@@ -165,13 +165,19 @@ public class ItemStackTrans {
          }
       }
 
-      if (par2 && item1.hasPrice()) {
+      if (par2 && item1.hasSoldPrice()) {
          var3.add("");
-         var3.add(EnumChatFormats.DARK_GREEN + Translator.get("item.tooltip.price") + ": " + item1.getPrice());
+         var3.add(EnumChatFormats.DARK_RED + Translator.get("item.tooltip.soldprice") + ": " + item1.getSoldPrice());
       }
 
-      if (par2 && item1.hasSoldPrice()) {
-         var3.add(EnumChatFormats.DARK_RED + Translator.get("item.tooltip.soldprice") + ": " + item1.getSoldPrice());
+      if (par2 && item1.hasPrice()) {
+         var3.add(EnumChatFormats.DARK_GREEN + Translator.get("item.tooltip.price") + ": " + item1.getPrice());
+         if (item1.getHasSubtypes()){
+            var3.add(Translator.get("item.tooltip.ID") + ": " + item1.itemID +"/"+ Translator.get("item.tooltip.SUB") + ": " + item1.getNumSubtypes());
+         } else{
+            var3.add(Translator.get("item.tooltip.ID") + ": " + item1.itemID);
+         }
+
       }
 
       if (par2 && this.getQuality() != null) {
