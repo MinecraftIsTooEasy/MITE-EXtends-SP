@@ -1,6 +1,8 @@
 package net.xiaoyu233.mitemod.miteite.trans.block;
 
 import net.minecraft.*;
+import net.xiaoyu233.mitemod.miteite.block.Blocks;
+import net.xiaoyu233.mitemod.miteite.item.Items;
 import net.xiaoyu233.mitemod.miteite.item.ToolModifierTypes;
 import net.xiaoyu233.mitemod.miteite.item.enchantment.Enchantments;
 import org.spongepowered.asm.mixin.Mixin;
@@ -60,7 +62,9 @@ public class BlockOreTrans extends Block {
                 id_dropped = Item.emerald.itemID;
             } else if (this == oreNetherQuartz) {
                 id_dropped = Item.netherQuartz.itemID;
-            } else if (this == oreCopper && melt_enabled) {
+            } else if(this == Blocks.fancyRed){
+                id_dropped = Items.fancyRed.itemID;
+            }else if (this == oreCopper && melt_enabled) {
                 id_dropped = Item.ingotCopper.itemID;
             }  else if (this == oreSilver && melt_enabled) {
                 id_dropped = Item.ingotSilver.itemID;

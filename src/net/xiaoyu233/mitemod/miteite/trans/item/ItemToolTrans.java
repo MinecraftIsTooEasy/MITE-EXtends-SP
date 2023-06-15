@@ -2,10 +2,7 @@ package net.xiaoyu233.mitemod.miteite.trans.item;
 
 import com.google.common.collect.Multimap;
 import net.minecraft.*;
-import net.xiaoyu233.mitemod.miteite.item.IUpgradableItem;
-import net.xiaoyu233.mitemod.miteite.item.Materials;
-import net.xiaoyu233.mitemod.miteite.item.ModifierUtils;
-import net.xiaoyu233.mitemod.miteite.item.ToolModifierTypes;
+import net.xiaoyu233.mitemod.miteite.item.*;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
 import net.xiaoyu233.mitemod.miteite.util.ReflectHelper;
 import net.xiaoyu233.mitemod.miteite.util.StringUtil;
@@ -87,11 +84,12 @@ public class ItemToolTrans extends Item implements IUpgradableItem {
          }
 
          if (extended_info) {
+            info.add("§5宝石:");
+            info.add(" §3攻击增加:§6" + ItemStack.field_111284_a.format(item_stack.getGemMaxNumeric(GemModifierTypes.damage)));
             NBTTagCompound compound = item_stack.stackTagCompound.getCompoundTag("modifiers");
             if (!compound.hasNoTags()) {
                info.add("工具强化:");
                ToolModifierTypes[] var8 = ToolModifierTypes.values();
-
                for (ToolModifierTypes value : var8) {
                   if (compound.hasKey(value.nbtName)) {
                      info.add("  " + value.color.toString() + value.displayName + "§r " + StringUtil.intToRoman(compound.getInteger(value.nbtName)));
@@ -100,14 +98,12 @@ public class ItemToolTrans extends Item implements IUpgradableItem {
             }
          }
       }
-
    }
 
    private int applyCalculateDurabilityModifier(int origin, ItemStack stack) {
       NBTTagCompound compound = stack.getTagCompound();
       return (int)((float)origin * Math.max(0.0F, 1.0F - ToolModifierTypes.DURABILITY_MODIFIER.getModifierValue(compound)));
    }
-
    @Overwrite
    public boolean canBlock() {
       return false;

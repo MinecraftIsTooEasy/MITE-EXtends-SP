@@ -94,6 +94,23 @@ public abstract class EntityLivingTrans extends Entity {
    protected void entityInit() {
    }
 
+//   @Redirect(method = "onEntityUpdate",at = @At(ordinal = 1,value = "INVOKE",target = "Lnet/minecraft/EntityLiving;attackEntityFrom(Lnet/minecraft/Damage;)Lnet/minecraft/EntityDamageResult;"))
+//   private EntityDamageResult injectModifyPlayerInWallDamage(EntityLiving caller,Damage damage){
+//      // 取消蝙蝠骑士窒息伤害
+//      if(ReflectHelper.dyCast(this) instanceof EntitySkeleton) {
+//         if(((EntitySkeleton)ReflectHelper.dyCast(this)).ridingEntity != null) {
+//            return null;
+//         }
+//      }
+//      // 取消玩家窒息伤害
+//      if (ReflectHelper.dyCast(this) instanceof EntityPlayer) {
+////        return this.attackEntityFrom(new Damage(DamageSource.inWall, Configs.wenscConfig.inWallDamageForPlayer.ConfigValue));
+//         return null;
+//      } else {
+//         return this.attackEntityFrom(new Damage(DamageSource.inWall, 1.0f));
+//      }
+//   }
+
    @Inject(locals = LocalCapture.CAPTURE_FAILHARD,method = "attackEntityFrom",at = @At(value = "INVOKE",shift = At.Shift.AFTER,target = "Lnet/minecraft/EntityLiving;attackEntityFromHelper(Lnet/minecraft/Damage;Lnet/minecraft/EntityDamageResult;)Lnet/minecraft/EntityDamageResult;"))
    private void injectAfterDamageCallback(Damage damage, CallbackInfoReturnable<EntityDamageResult> c, EntityDamageResult result){
       this.checkForAfterDamage(damage, result);
@@ -145,10 +162,18 @@ public abstract class EntityLivingTrans extends Entity {
 
    @Redirect(method = "onEntityUpdate",at = @At(ordinal = 1,value = "INVOKE",target = "Lnet/minecraft/EntityLiving;attackEntityFrom(Lnet/minecraft/Damage;)Lnet/minecraft/EntityDamageResult;"))
    private EntityDamageResult injectModifyPlayerInWallDamage(EntityLiving caller,Damage damage){
+      // 取消蝙蝠骑士窒息伤害
+      if(ReflectHelper.dyCast(this) instanceof EntitySkeleton) {
+         if(((EntitySkeleton)ReflectHelper.dyCast(this)).ridingEntity != null) {
+            return null;
+         }
+      }
+      // 取消玩家窒息伤害
       if (ReflectHelper.dyCast(this) instanceof EntityPlayer) {
-        return this.attackEntityFrom(new Damage(DamageSource.inWall, Configs.wenscConfig.inWallDamageForPlayer.ConfigValue));
-      }else {
-        return this.attackEntityFrom(new Damage(DamageSource.inWall, 1.0f));
+//        return this.attackEntityFrom(new Damage(DamageSource.inWall, Configs.wenscConfig.inWallDamageForPlayer.ConfigValue));
+         return null;
+      } else {
+         return this.attackEntityFrom(new Damage(DamageSource.inWall, 1.0f));
       }
    }
 

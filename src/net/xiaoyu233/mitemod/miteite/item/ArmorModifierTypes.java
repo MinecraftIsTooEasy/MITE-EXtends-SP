@@ -1,22 +1,20 @@
 package net.xiaoyu233.mitemod.miteite.item;
 
 import net.minecraft.*;
-import net.xiaoyu233.mitemod.miteite.util.EnumChatFormats;
-
 import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
 public enum ArmorModifierTypes implements ItemModifierTypes{
     //Armor Modifiers
     DURABILITY_MODIFIER(0.1F,"持久",EnumChatFormat.DARK_PURPLE,20,5,(stack -> true)),
-    PROJECTILE_PROTECTION_MODIFIER(0.5F,"弹射物保护", EnumChatFormats.DARK_GREY,7,5,(stack -> hasNotOtherProtectionModifier(stack,3))),
-    EXPLOSION_PROTECTION_MODIFIER(0.5F,"爆炸保护", EnumChatFormats.DARK_RED,7,5,(stack -> hasNotOtherProtectionModifier(stack,2))),
-    FIRE_PROTECTION_MODIFIER(0.5F,"火焰保护", EnumChatFormats.LIGHT_ORANGE,7,5,(stack -> hasNotOtherProtectionModifier(stack,0))),
+    PROJECTILE_PROTECTION_MODIFIER(0.5F,"弹射物保护", EnumChatFormat.BLUE,7,5,(stack -> hasNotOtherProtectionModifier(stack,3))),
+    EXPLOSION_PROTECTION_MODIFIER(0.5F,"爆炸保护", EnumChatFormat.GREEN,7,5,(stack -> hasNotOtherProtectionModifier(stack,2))),
+    FIRE_PROTECTION_MODIFIER(0.5F,"火焰保护", EnumChatFormat.RED,7,5,(stack -> hasNotOtherProtectionModifier(stack,0))),
     PROTECTION_MODIFIER(0.2F,"保护",EnumChatFormat.WHITE,5,5,(stack -> hasNotOtherProtectionModifier(stack,1))),
     STEADY_MODIFIER(0.15F,"稳定",EnumChatFormat.DARK_GRAY,8,5,(stack -> true)),
-    BLESSED_MODIFIER(1F,"神圣",EnumChatFormats.SILVER,8,5,(stack -> true)),
-    INDOMITABLE(0.05f,"坚毅不倒",EnumChatFormats.LIGHT_YELLOW_GREEN,2,4,itemStack -> itemStack.getItem() instanceof ItemCuirass),
-    INVINCIBLE(0.05f,"精力充沛",EnumChatFormats.DARK_GREEN,2,4,itemStack -> itemStack.getItem() instanceof ItemLeggings),
+    BLESSED_MODIFIER(1F,"神圣",EnumChatFormat.BROWN,8,5,(stack -> true)),
+    INDOMITABLE(0.05f,"坚毅不倒",EnumChatFormat.YELLOW,2,4,itemStack -> itemStack.getItem() instanceof ItemCuirass),
+    INVINCIBLE(0.05f,"精力充沛",EnumChatFormat.DARK_GREEN,2,4,itemStack -> itemStack.getItem() instanceof ItemLeggings),
     AGILITY(0.05f,"灵敏",EnumChatFormat.LIGHT_PURPLE,2,4,itemStack -> itemStack.getItem() instanceof ItemBoots),
     IMMUNITY(0.15f,"免疫",EnumChatFormat.GREEN,2,4,itemStack -> itemStack.getItem() instanceof ItemHelmet);
     public final String nbtName;

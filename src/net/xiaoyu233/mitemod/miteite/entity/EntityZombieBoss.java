@@ -3,14 +3,12 @@ package net.xiaoyu233.mitemod.miteite.entity;
 import net.minecraft.*;
 import net.minecraft.server.MinecraftServer;
 import net.xiaoyu233.mitemod.miteite.item.Items;
-import net.xiaoyu233.mitemod.miteite.item.enchantment.Enchantments;
-import net.xiaoyu233.mitemod.miteite.util.Configs;
 
 import java.util.*;
 
 public class EntityZombieBoss extends EntityZombie {
-    private Enchantment [] enhanceSpecialBookList = new Enchantment[] {Enchantment.protection, Enchantment.sharpness,  Enchantment.fortune, Enchantment.harvesting, Enchantments.EXTEND, Enchantment.efficiency, Enchantment.vampiric, Enchantment.butchering, Enchantment.featherFalling};
-    private Enchantment [] nonLevelsBookList = new Enchantment[] {Enchantments.enchantmentFixed, Enchantments.enchantmentChain, Enchantments.EMERGENCY, Enchantments.EnchantmentForge};
+//    private Enchantment [] enhanceSpecialBookList = new Enchantment[] {Enchantment.protection, Enchantment.sharpness,  Enchantment.fortune, Enchantment.harvesting, Enchantments.EXTEND, Enchantment.efficiency, Enchantment.vampiric, Enchantment.butchering, Enchantment.featherFalling};
+//    private Enchantment [] nonLevelsBookList = new Enchantment[] {Enchantments.enchantmentFixed, Enchantments.enchantmentChain, Enchantments.EMERGENCY, Enchantments.EnchantmentForge};
     private int thunderTick = 0;
     private int attackedCounter = 200;
     public Map<String, Float> attackDamageMap = new HashMap<>();
@@ -38,25 +36,30 @@ public class EntityZombieBoss extends EntityZombie {
     protected void dropFewItems(boolean recently_hit_by_player, DamageSource damage_source) {
         if (recently_hit_by_player){
             this.broadcastDamage("僵尸BOSS挑战成功");
-            this.dropItemStack(new ItemStack(Items.diamond, 10));
-            float percent = (float) nonLevelsBookList.length / ((float)enhanceSpecialBookList.length + (float)nonLevelsBookList.length);
-            if(rand.nextFloat() < percent && rand.nextInt(5) == 0) {
-                Enchantment dropEnchantment = nonLevelsBookList[rand.nextInt(nonLevelsBookList.length)];
-                ItemStack var11 = Item.enchantedBook.getEnchantedItemStack(new EnchantmentInstance(dropEnchantment, dropEnchantment.getNumLevelsForVibranium()));
-                this.dropItemStack(var11);
-                return;
+                MinecraftServer server = MinecraftServer.F();
+                Iterator var4 = server.getConfigurationManager().playerEntityList.iterator();
+
+                while (var4.hasNext()) {
+                    Object o = var4.next();
+                    EntityPlayer player = (EntityPlayer)o;
+                    if(attackDamageMap.containsKey(player.getEntityName())) {
+                        float damage = attackDamageMap.get(player.getEntityName());
+                        int nums = Math.round(damage) / 10;
+                        if(nums > 0) {
+                            player.inventory.addItemStackToInventoryOrDropIt(new ItemStack(Item.diamond, nums));
+                        }
+                    }
+                }
             }
-            Enchantment dropEnchantment = enhanceSpecialBookList[rand.nextInt(enhanceSpecialBookList.length)];
-            ItemStack var11 = Item.enchantedBook.getEnchantedItemStack(new EnchantmentInstance(dropEnchantment, dropEnchantment.getNumLevelsForVibranium()));
-            this.dropItemStack(var11);
-            this.dropItemStack(new ItemStack(Items.voucherZombieBoss, 1));
         }
-    }
 
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.setEntityAttribute(GenericAttributes.attackDamage, 12d + Configs.wenscConfig.zombieBossBaseDamage.ConfigValue);
-        this.setEntityAttribute(GenericAttributes.maxHealth, Configs.wenscConfig.zombieBossMaxHealth.ConfigValue);
+//        this.setEntityAttribute(GenericAttributes.attackDamage, 12d + Configs.wenscConfig.zombieBossBaseDamage.ConfigValue);
+//        this.setEntityAttribute(GenericAttributes.maxHealth, Configs.wenscConfig.zombieBossMaxHealth.ConfigValue);
+        int rate = Math.min(200, worldObj.getDayOfOverworld()) / 20;
+        this.setEntityAttribute(GenericAttributes.attackDamage, 6 + rate * 2);
+        this.setEntityAttribute(GenericAttributes.maxHealth, 20 + rate * 20);
         this.setEntityAttribute(GenericAttributes.movementSpeed, 0.3D);
     }
 

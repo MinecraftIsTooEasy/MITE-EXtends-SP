@@ -1,6 +1,14 @@
 # MITE-EXtends-SP更新日志
 
 
+## s1.4.4-pre1
+赞助版本, 赞助者：爱发电用户_mQdS, Whscqngsd，叶辉
+### 指令
+* 移除了破/extend generatePrice指令
+### 其他
+* 同步至MITE-Extreme-v0.1.3.8
+
+---
 
 ## v1.4.3
 * 应某主播要求更新了下

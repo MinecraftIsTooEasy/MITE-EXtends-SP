@@ -33,7 +33,12 @@ public class BlockForgingTable extends Block implements IContainer,IBlockWithSub
     @Override
     @SoftOverride
     public String getItemDisplayName(ItemStack itemStack) {
-        return Translator.get("tile.forging_table." + this.getNames()[itemStack.getItemSubtype()] + ".name");
+        //return Translator.get("tile.forging_table." + this.getNames()[itemStack.getItemSubtype()] + ".name");
+        if(itemStack != null) {
+            return Translator.get("tile.forging_table." + this.getNames()[itemStack.getItemSubtype()] + ".name");
+        } else {
+            return  "";
+        }
     }
 
     @Override
@@ -110,6 +115,7 @@ public class BlockForgingTable extends Block implements IContainer,IBlockWithSub
         return true;
     }
 
+    @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, EnumFace face, float offset_x, float offset_y, float offset_z) {
         if (!world.isAirOrPassableBlock(x, y + 1, z, false)) {
             return false;

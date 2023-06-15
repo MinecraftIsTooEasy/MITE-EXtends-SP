@@ -4,6 +4,7 @@ import net.minecraft.EntityPlayer;
 import net.minecraft.Item;
 import net.minecraft.ItemRock;
 import net.minecraft.ItemStack;
+import net.xiaoyu233.mitemod.miteite.item.Items;
 import net.xiaoyu233.mitemod.miteite.util.Configs;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -19,7 +20,12 @@ public class ItemGemsTrans extends Item {
       if (item == Item.dyePowder && item_stack.getItemSubtype() == 4) {
          return 40;
       } else {
-         return item == netherQuartz ? Configs.wenscConfig.quartzExp.ConfigValue : (item == emerald ? Configs.wenscConfig.emeraldExp.ConfigValue : (item == diamond ? Configs.wenscConfig.diamondExp.ConfigValue : 0));
+         return item == netherQuartz
+                 ? Configs.wenscConfig.quartzExp.ConfigValue
+                 : (item == emerald ? Configs.wenscConfig.emeraldExp.ConfigValue
+                 : (item == diamond ? Configs.wenscConfig.diamondExp.ConfigValue
+                 : (item == Items.fancyRed ? Configs.wenscConfig.fancyRedExp.ConfigValue
+                 : 0)));
       }
    }
 

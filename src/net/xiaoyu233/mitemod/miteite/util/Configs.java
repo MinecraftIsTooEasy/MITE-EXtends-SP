@@ -42,6 +42,10 @@ public class Configs {
     }
 
     public static class wenscConfig {
+        public static ConfigItem <Integer> fancyRedExp = new ConfigItem("fancyRedExp", 500, "红钻经验", 0 ,10000);
+        public static ConfigItem <Integer> fancyRedFrequencyUnderworld = new ConfigItem("fancyRedFrequencyUnderworld", 3, "地底世界红钻矿生成频率", 0 ,100);
+
+
         public static ConfigItem <Boolean> BlnGravel = new ConfigItem("BlnGravel", true, "是否增加燧石概率");
         public static ConfigItem <Boolean> isOpenStrongBoxBreakRecord = new ConfigItem("isOpenStrongBoxBreakRecord", true, "是否开启私人箱子破坏记录");
         public static ConfigItem <Boolean> isRecipeGATorch = new ConfigItem("isRecipeGATorch", true, "是否有一捆火把配方");
@@ -81,10 +85,10 @@ public class Configs {
         public static ConfigItem <Integer> quartzExp = new ConfigItem("quartzExp", 35, "石英经验", 0 ,10000);
         public static ConfigItem <Integer> goldenAppleEatTime = new ConfigItem("goldenAppleEatTime", 10, "金苹果使用耗时（tick）", 0 ,1000000);
         public static ConfigItem <Integer> enchantedGoldenAppleEatTime = new ConfigItem("enchantedGoldenAppleEatTime", 10, "附魔金苹果使用耗时（tick）", 0 ,1000000);
-        public static ConfigItem <Integer> ironToMithrilCookTime = new ConfigItem("ironToMithrilCookTime", 6000, "铁烧制为秘银耗时（tick）", 0 ,1000000);
-        public static ConfigItem <Integer> ironBlockCountToMithril = new ConfigItem("ironBlockCountToMithril", 2, "铁烧制为秘银所需铁块数量", 1 ,4);
-        public static ConfigItem <Integer> mithrilToAdamantiumCookTime = new ConfigItem("mithrilToAdamantiumCookTime", 9000, "秘银烧制为艾德曼耗时(tick)", 0 ,1000000);
-        public static ConfigItem <Integer> mithrilBlockCountToAdamantium = new ConfigItem("mithrilBlockCountToAdamantium", 1, "秘银烧制为艾德曼所需秘银块数量", 1 ,4);
+//        public static ConfigItem <Integer> ironToMithrilCookTime = new ConfigItem("ironToMithrilCookTime", 6000, "铁烧制为秘银耗时（tick）", 0 ,1000000);
+//        public static ConfigItem <Integer> ironBlockCountToMithril = new ConfigItem("ironBlockCountToMithril", 2, "铁烧制为秘银所需铁块数量", 1 ,4);
+//        public static ConfigItem <Integer> mithrilToAdamantiumCookTime = new ConfigItem("mithrilToAdamantiumCookTime", 9000, "秘银烧制为艾德曼耗时(tick)", 0 ,1000000);
+//        public static ConfigItem <Integer> mithrilBlockCountToAdamantium = new ConfigItem("mithrilBlockCountToAdamantium", 1, "秘银烧制为艾德曼所需秘银块数量", 1 ,4);
         public static ConfigItem <Integer> critEnchantmentChanceBoostPerLvl = new ConfigItem("critEnchantmentChanceBoostPerLvl", 2, "暴击附魔每级暴击几率", 0 ,100);
         public static ConfigItem <Float> critEnchantmentDamageBoostPerLvl = new ConfigItem("critEnchantmentDamageBoostPerLvl", 0.4F, "暴击附魔每级额外伤害", 0f ,100f);
         public static ConfigItem <Integer> emergencyCooldown = new ConfigItem("emergencyCooldown", 120000, "紧急守备冷却时间（tick）", 0 ,1000000);
@@ -181,6 +185,9 @@ public class Configs {
     }
 
     public static void loadConfigs(){
+        wenscMap.put("fancyRedFrequencyUnderworld", wenscConfig.fancyRedFrequencyUnderworld);
+        wenscMap.put("fancyRedExp", wenscConfig.fancyRedExp);
+
         wenscMap.put("BlnFinsh", wenscConfig.BlnFinsh);
         wenscMap.put("downPigZombieAttackDamage", wenscConfig.downPigZombieAttackDamage);
         wenscMap.put("isActiveSecondaryAttribute", wenscConfig.isActiveSecondaryAttribute);
@@ -223,10 +230,10 @@ public class Configs {
         wenscMap.put("quartzExp", wenscConfig.quartzExp);
         wenscMap.put("goldenAppleEatTime", wenscConfig.goldenAppleEatTime);
         wenscMap.put("enchantedGoldenAppleEatTime", wenscConfig.enchantedGoldenAppleEatTime);
-        wenscMap.put("ironToMithrilCookTime", wenscConfig.ironToMithrilCookTime);
-        wenscMap.put("ironBlockCountToMithril", wenscConfig.ironBlockCountToMithril);
-        wenscMap.put("mithrilToAdamantiumCookTime", wenscConfig.mithrilToAdamantiumCookTime);
-        wenscMap.put("mithrilBlockCountToAdamantium", wenscConfig.mithrilBlockCountToAdamantium);
+//        wenscMap.put("ironToMithrilCookTime", wenscConfig.ironToMithrilCookTime);
+//        wenscMap.put("ironBlockCountToMithril", wenscConfig.ironBlockCountToMithril);
+//        wenscMap.put("mithrilToAdamantiumCookTime", wenscConfig.mithrilToAdamantiumCookTime);
+//        wenscMap.put("mithrilBlockCountToAdamantium", wenscConfig.mithrilBlockCountToAdamantium);
         wenscMap.put("critEnchantmentChanceBoostPerLvl", wenscConfig.critEnchantmentChanceBoostPerLvl);
         wenscMap.put("critEnchantmentDamageBoostPerLvl", wenscConfig.critEnchantmentDamageBoostPerLvl);
         wenscMap.put("emergencyCooldown", wenscConfig.emergencyCooldown);

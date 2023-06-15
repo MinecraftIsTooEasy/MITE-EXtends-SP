@@ -1,3 +1,4 @@
+
 package net.xiaoyu233.mitemod.miteite.trans.item.recipe;
 
 import net.minecraft.CraftingResult;

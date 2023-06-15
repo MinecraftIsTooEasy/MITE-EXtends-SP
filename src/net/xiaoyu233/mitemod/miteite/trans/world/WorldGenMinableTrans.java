@@ -1,6 +1,7 @@
 package net.xiaoyu233.mitemod.miteite.trans.world;
 
 import net.minecraft.*;
+import net.xiaoyu233.mitemod.miteite.block.Blocks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -120,7 +121,11 @@ public class WorldGenMinableTrans {
                do {
                   relative_height = rand.nextFloat();
                } while(relative_height >= rand.nextFloat());
-            } else {
+            } else if (block == Blocks.fancyRed) {
+               do {
+                  relative_height = rand.nextFloat();
+               } while(relative_height >= rand.nextFloat());
+            }else {
                if (block != Block.oreLapis) {
                   Minecraft.setErrorMessage("WorldGenMinable: unknown ore id " + this.minableBlockId);
                   return -1;
@@ -174,7 +179,9 @@ public class WorldGenMinableTrans {
          return 0;
       } else if (block == Block.oreDiamond) {
          return 0;
-      } else if (block == Block.oreLapis) {
+      } else if (block == Blocks.fancyRed) {
+         return 0;
+      }else if (block == Block.oreLapis) {
          return 8;
       } else if(world.isTheNether()){
          return 35;

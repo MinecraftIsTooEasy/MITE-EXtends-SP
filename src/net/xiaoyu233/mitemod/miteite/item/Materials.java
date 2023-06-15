@@ -55,7 +55,7 @@ public class Materials extends Material {
         } else if (this == diamond) {
             return 4.0F;
         } else if (this == vibranium) {
-            return 9.0F;
+            return 7.0F;
         } else if (this == enchant) {
             return 8.0F;
         }else if (this == infinity) {

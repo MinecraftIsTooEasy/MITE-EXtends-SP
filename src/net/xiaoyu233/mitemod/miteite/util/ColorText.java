@@ -4,7 +4,7 @@ import net.minecraft.EnumChatFormat;
 import net.minecraft.Minecraft;
 
 public class ColorText {
-    private static final EnumChatFormat[] fabulousness = new EnumChatFormat[] {EnumChatFormat.RED, EnumChatFormats.GOLD, EnumChatFormat.YELLOW,
+    private static final EnumChatFormat[] fabulousness = new EnumChatFormat[] {EnumChatFormat.RED, EnumChatFormat.YELLOW, EnumChatFormat.YELLOW,
             EnumChatFormat.GREEN, EnumChatFormat.AQUA, EnumChatFormat.BLUE, EnumChatFormat.LIGHT_PURPLE};
     public static String makeFabulous(String input) {
         return Formatting(input, fabulousness, 1, 1);

@@ -53,7 +53,7 @@ public abstract class EntityVillagerTrans extends EntityAgeable implements IMerc
    }
 
    private void initEnhanceBookList() {
-      villagerEnhanceSpecialBookList = new Enchantment[] {Enchantment.protection, Enchantment.sharpness,  Enchantment.fortune, Enchantment.harvesting, Enchantments.EXTEND, Enchantment.efficiency, Enchantment.vampiric, Enchantment.butchering};
+      villagerEnhanceSpecialBookList = new Enchantment[] {Enchantment.protection, Enchantment.sharpness,  Enchantment.fortune, Enchantment.harvesting, Enchantments.EXTEND, Enchantment.efficiency, Enchantment.vampiric, Enchantment.butchering, Enchantments.enchantmentFixed, Enchantments.enchantmentChain, Enchantments.EMERGENCY};
       villagerEnhanceSimpleBookList = Arrays.stream(Enchantment.enchantmentsBookList).filter(enhance -> (enhance.getNumLevels() > 1 && !Arrays.stream(villagerEnhanceSpecialBookList).anyMatch(spcialEnhance ->  spcialEnhance.effectId == enhance.effectId))).toArray();
    }
 
@@ -155,24 +155,24 @@ public abstract class EntityVillagerTrans extends EntityAgeable implements IMerc
       int var6;
       label51:
       switch(this.getProfession()) {
-      case 0:
-         addMerchantItem(var2, Item.wheat.itemID, this.rand, this.adjustProbability(0.9F));
-         forEmeraldShard(var2, Block.cloth.blockID, this.rand, this.adjustProbability(0.5F));
-         addMerchantItem(var2, Item.chickenRaw.itemID, this.rand, this.adjustProbability(0.5F));
-         addMerchantItem(var2, Item.fishCooked.itemID, this.rand, this.adjustProbability(0.4F));
-         addBlacksmithItem(var2, Item.bread.itemID, this.rand, this.adjustProbability(0.9F));
-         addBlacksmithItem(var2, Item.melon.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.appleRed.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.cookie.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.shears.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.flintAndSteel.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.chickenCooked.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.arrowFlint.itemID, this.rand, this.adjustProbability(0.5F));
-         if (this.rand.nextFloat() < this.adjustProbability(0.5F)) {
-            var2.add(new MerchantRecipe(new ItemStack(Block.gravel, 4), new ItemStack(Item.emerald), new ItemStack(Item.flint.itemID, 4 + this.rand.nextInt(2), 0)));
-         }
-         break;
-      case 1:
+         case 0:
+            addMerchantItem(var2, Item.wheat.itemID, this.rand, this.adjustProbability(0.9F));
+            forEmeraldShard(var2, Block.cloth.blockID, this.rand, this.adjustProbability(0.5F));
+            addMerchantItem(var2, Item.chickenRaw.itemID, this.rand, this.adjustProbability(0.5F));
+            addMerchantItem(var2, Item.fishCooked.itemID, this.rand, this.adjustProbability(0.4F));
+            addBlacksmithItem(var2, Item.bread.itemID, this.rand, this.adjustProbability(0.9F));
+            addBlacksmithItem(var2, Item.melon.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.appleRed.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.cookie.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.shears.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.flintAndSteel.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.chickenCooked.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.arrowFlint.itemID, this.rand, this.adjustProbability(0.5F));
+            if (this.rand.nextFloat() < this.adjustProbability(0.5F)) {
+               var2.add(new MerchantRecipe(new ItemStack(Block.gravel, 4), new ItemStack(Item.emerald), new ItemStack(Item.flint.itemID, 4 + this.rand.nextInt(2), 0)));
+            }
+            break;
+         case 1:
 //         addMerchantItem(var2, Item.paper.itemID, this.rand, this.adjustProbability(0.8F));
 //         addMerchantItem(var2, Item.book.itemID, this.rand, this.adjustProbability(0.8F));
 //         addMerchantItem(var2, Item.writtenBook.itemID, this.rand, this.adjustProbability(0.8F));
@@ -180,113 +180,120 @@ public abstract class EntityVillagerTrans extends EntityAgeable implements IMerc
 //         addBlacksmithItem(var2, Block.glass.blockID, this.rand, this.adjustProbability(0.8F));
 //         addBlacksmithItem(var2, Item.compass.itemID, this.rand, this.adjustProbability(0.8F));
 //         addBlacksmithItem(var2, Item.pocketSundial.itemID, this.rand, this.adjustProbability(0.8F));
-         if (this.rand.nextFloat() < this.adjustProbability(0.5F)) {
-            var2.add(new MerchantRecipe(new ItemStack(Item.emerald, 4), new ItemStack(Item.diamond, 3)));
-         }
-         if (this.rand.nextFloat() < this.adjustProbability(0.5F)) {
-            var2.add(new MerchantRecipe(new ItemStack(Item.diamond, 3), new ItemStack(Item.emerald, 4)));
-         }
-         Enchantment var8 = (Enchantment)villagerEnhanceSimpleBookList[this.rand.nextInt(villagerEnhanceSimpleBookList.length)];
-
-         int var10 = MathHelper.getRandomIntegerInRange(this.rand, 1, var8.getNumLevelsForVibranium());
-         ItemStack var11 = Item.enchantedBook.getEnchantedItemStack(new EnchantmentInstance(var8, var10));
-         var6 = var10 * 5 + this.rand.nextInt(10);
-         if(var6 > 32) {
-            var2.add(new MerchantRecipe(new ItemStack(Item.emerald, 32), new ItemStack(Item.emerald, (var6 - 32 > 32 ? 32 : var6 - 32)), var11));
-         } else {
-            var2.add(new MerchantRecipe(new ItemStack(Item.emerald, var6), var11));
-         }
-
-         if (this.buyingList != null) {
-            this.field_82191_bN = MathHelper.sqrt_float((float)this.buyingList.size()) * 0.01F;
-         } else {
-            this.field_82191_bN = 0.0F;
-         }
-         if (this.rand.nextFloat() < this.adjustProbability(0.05f)) {
-            Enchantment var12 = this.villagerEnhanceSpecialBookList[this.rand.nextInt(villagerEnhanceSpecialBookList.length)];
-            int currentMaxLevelSpecial = 1;
-            if (this.buyingList != null) {
-               currentMaxLevelSpecial = (int) Math.round(Math.sqrt(this.buyingList.size()));
+            if (this.rand.nextFloat() < this.adjustProbability(0.5F)) {
+               var2.add(new MerchantRecipe(new ItemStack(Item.emerald, 4), new ItemStack(Item.diamond, 3)));
             }
-            int var13 = MathHelper.getRandomIntegerInRange(this.rand, 1, currentMaxLevelSpecial > var12.getNumLevelsForVibranium() ? var12.getNumLevelsForVibranium() : currentMaxLevelSpecial);
-            ItemStack var14 = Item.enchantedBook.getEnchantedItemStack(new EnchantmentInstance(var12, var13));
-            var6 = var13 * 5 + this.rand.nextInt(10);
+            if (this.rand.nextFloat() < this.adjustProbability(0.5F)) {
+               var2.add(new MerchantRecipe(new ItemStack(Item.diamond, 3), new ItemStack(Item.emerald, 4)));
+            }
+            if (this.rand.nextFloat() < this.adjustProbability(0.5F)) {
+               var2.add(new MerchantRecipe(new ItemStack(Items.fancyRed, 3), new ItemStack(Item.emerald, 5)));
+            }
+            Enchantment var8 = (Enchantment)villagerEnhanceSimpleBookList[this.rand.nextInt(villagerEnhanceSimpleBookList.length)];
+
+            int var10 = MathHelper.getRandomIntegerInRange(this.rand, 1, var8.getNumLevelsForVibranium());
+            ItemStack var11 = Item.enchantedBook.getEnchantedItemStack(new EnchantmentInstance(var8, var10));
+            var6 = var10 * 5 + this.rand.nextInt(10);
             if(var6 > 32) {
-               var2.add(new MerchantRecipe(new ItemStack(Item.emerald, 32), new ItemStack(Item.emerald, (var6 - 32 > 32 ? 32 : var6 - 32)), var14));
+               var2.add(new MerchantRecipe(new ItemStack(Item.emerald, 32), new ItemStack(Item.emerald, (var6 - 32 > 32 ? 32 : var6 - 32)), var11));
             } else {
-               var2.add(new MerchantRecipe(new ItemStack(Item.emerald, var6), var14));
-            }
-         }
-         break;
-      case 2:
-         addBlacksmithItem(var2, Item.eyeOfEnder.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.redstone.itemID, this.rand, this.adjustProbability(0.4F));
-         addBlacksmithItem(var2, Block.glowStone.blockID, this.rand, this.adjustProbability(0.3F));
-         int[] var3 = new int[]{Item.swordCopper.itemID, Item.swordIron.itemID, Item.plateCopper.itemID, Item.plateIron.itemID, Item.axeCopper.itemID, Item.axeIron.itemID, Item.pickaxeCopper.itemID, Item.pickaxeIron.itemID};
-         int[] var4 = var3;
-         int var5 = var3.length;
-         var6 = 0;
-
-         while(true) {
-            if (var6 >= var5) {
-               break label51;
+               var2.add(new MerchantRecipe(new ItemStack(Item.emerald, var6), var11));
             }
 
-            int var7 = var4[var6];
-            if (this.rand.nextFloat() < this.adjustProbability(0.05F)) {
-               var2.add(new MerchantRecipe(new ItemStack(var7, 1, 0), new ItemStack(Item.emerald, 2 + this.rand.nextInt(3), 0), EnchantmentManager.addRandomEnchantment(this.rand, new ItemStack(var7, 1, 0), 5 + this.rand.nextInt(15))));
+            if (this.buyingList != null) {
+               this.field_82191_bN = MathHelper.sqrt_float((float)this.buyingList.size()) * 0.01F;
+            } else {
+               this.field_82191_bN = 0.0F;
             }
+            if (this.rand.nextFloat() < this.adjustProbability(0.05f)) {
+               Enchantment var12 = this.villagerEnhanceSpecialBookList[this.rand.nextInt(villagerEnhanceSpecialBookList.length)];
+//            int currentMaxLevelSpecial = 1;
+//            if (this.buyingList != null) {
+//               currentMaxLevelSpecial = (int) Math.round(Math.sqrt(this.buyingList.size()));
+//            }
+               int level = MathHelper.getRandomIntegerInRange(this.rand, 1, var12.getNumLevelsForVibranium());
+               ItemStack var14 = Item.enchantedBook.getEnchantedItemStack(new EnchantmentInstance(var12, level));
+               if(var12.getNumLevelsForVibranium() > 1) {
+                  var6 = level * 5 + this.rand.nextInt(10);
+               } else {
+                  var6 = 7 * 5 + this.rand.nextInt(10);
+               }
+               if(var6 > 32) {
+                  var2.add(new MerchantRecipe(new ItemStack(Item.emerald, 32), new ItemStack(Item.emerald, (var6 - 32 > 32 ? 32 : var6 - 32)), var14));
+               } else {
+                  var2.add(new MerchantRecipe(new ItemStack(Item.emerald, var6), var14));
+               }
+            }
+            break;
+         case 2:
+            addBlacksmithItem(var2, Item.eyeOfEnder.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.redstone.itemID, this.rand, this.adjustProbability(0.4F));
+            addBlacksmithItem(var2, Block.glowStone.blockID, this.rand, this.adjustProbability(0.3F));
+            int[] var3 = new int[]{Item.swordCopper.itemID, Item.swordIron.itemID, Item.plateCopper.itemID, Item.plateIron.itemID, Item.axeCopper.itemID, Item.axeIron.itemID, Item.pickaxeCopper.itemID, Item.pickaxeIron.itemID};
+            int[] var4 = var3;
+            int var5 = var3.length;
+            var6 = 0;
 
-            ++var6;
-         }
-      case 3:
+            while(true) {
+               if (var6 >= var5) {
+                  break label51;
+               }
+
+               int var7 = var4[var6];
+               if (this.rand.nextFloat() < this.adjustProbability(0.05F)) {
+                  var2.add(new MerchantRecipe(new ItemStack(var7, 1, 0), new ItemStack(Item.emerald, 2 + this.rand.nextInt(3), 0), EnchantmentManager.addRandomEnchantment(this.rand, new ItemStack(var7, 1, 0), 5 + this.rand.nextInt(15))));
+               }
+
+               ++var6;
+            }
+         case 3:
 //         addMerchantItem(var2, Item.coal.itemID, this.rand, this.adjustProbability(0.8F));
 //         addMerchantItem(var2, Item.ingotGold.itemID, this.rand, this.adjustProbability(0.7F));
 //         addMerchantItem(var2, Item.ingotSilver.itemID, this.rand, this.adjustProbability(0.7F));
 //         addMerchantItem(var2, Item.ingotCopper.itemID, this.rand, this.adjustProbability(0.7F));
 //         addMerchantItem(var2, Item.ingotIron.itemID, this.rand, this.adjustProbability(0.6F));
-         if (this.rand.nextFloat() < this.adjustProbability(0.8F)) {
-            var2.add(new MerchantRecipe(new ItemStack(Item.coal, 10 + this.rand.nextInt(7)), new ItemStack(Item.emerald, 1)));
-         }
-         if (this.rand.nextFloat() < this.adjustProbability(0.7F)) {
-            int nums = 7 + this.rand.nextInt(5);
-            if(nums > 8) {
-               var2.add(new MerchantRecipe(new ItemStack(Item.ingotCopper, 8), new ItemStack(Item.ingotCopper, nums - 8), new ItemStack(Item.emerald, 1)));
-            } else {
-               var2.add(new MerchantRecipe(new ItemStack(Item.ingotCopper, nums), new ItemStack(Item.emerald, 1)));
+            if (this.rand.nextFloat() < this.adjustProbability(0.8F)) {
+               var2.add(new MerchantRecipe(new ItemStack(Item.coal, 10 + this.rand.nextInt(7)), new ItemStack(Item.emerald, 1)));
             }
-         }
-         if (this.rand.nextFloat() < this.adjustProbability(0.7F)) {
-            int nums = 7 + this.rand.nextInt(5);
-            if(nums > 8) {
-               var2.add(new MerchantRecipe(new ItemStack(Item.ingotSilver, 8), new ItemStack(Item.ingotSilver, nums - 8), new ItemStack(Item.emerald, 1)));
-            } else {
-               var2.add(new MerchantRecipe(new ItemStack(Item.ingotSilver, nums), new ItemStack(Item.emerald, 1)));
+            if (this.rand.nextFloat() < this.adjustProbability(0.7F)) {
+               int nums = 7 + this.rand.nextInt(5);
+               if(nums > 8) {
+                  var2.add(new MerchantRecipe(new ItemStack(Item.ingotCopper, 8), new ItemStack(Item.ingotCopper, nums - 8), new ItemStack(Item.emerald, 1)));
+               } else {
+                  var2.add(new MerchantRecipe(new ItemStack(Item.ingotCopper, nums), new ItemStack(Item.emerald, 1)));
+               }
             }
-         }
-         if (this.rand.nextFloat() < this.adjustProbability(0.7F)) {
-            int nums = 8 + this.rand.nextInt(5);
-            if(nums > 8) {
-               var2.add(new MerchantRecipe(new ItemStack(Item.ingotGold, 8), new ItemStack(Item.ingotGold, nums - 8), new ItemStack(Item.emerald, 1)));
-            } else {
-               var2.add(new MerchantRecipe(new ItemStack(Item.ingotGold, nums), new ItemStack(Item.emerald, 1)));
+            if (this.rand.nextFloat() < this.adjustProbability(0.7F)) {
+               int nums = 7 + this.rand.nextInt(5);
+               if(nums > 8) {
+                  var2.add(new MerchantRecipe(new ItemStack(Item.ingotSilver, 8), new ItemStack(Item.ingotSilver, nums - 8), new ItemStack(Item.emerald, 1)));
+               } else {
+                  var2.add(new MerchantRecipe(new ItemStack(Item.ingotSilver, nums), new ItemStack(Item.emerald, 1)));
+               }
             }
-         }
-         if (this.rand.nextFloat() < this.adjustProbability(0.6F)) {
-            var2.add(new MerchantRecipe(new ItemStack(Item.ingotIron, 5 + this.rand.nextInt(4)), new ItemStack(Item.emerald, 1)));
-         }
-         if (this.rand.nextFloat() < this.adjustProbability(0.5F)) {
-            var2.add(new MerchantRecipe(new ItemStack(Item.ingotAncientMetal, 3 + this.rand.nextInt(3)), new ItemStack(Item.diamond, 1)));
-         }
-         if (this.rand.nextFloat() < this.adjustProbability(0.4F)) {
-            var2.add(new MerchantRecipe(new ItemStack(Item.ingotMithril, 1 + this.rand.nextInt(2)), new ItemStack(Item.diamond, 1)));
-         }
-         if (this.rand.nextFloat() < this.adjustProbability(0.3F)) {
-            var2.add(new MerchantRecipe(new ItemStack(Item.ingotAdamantium, 1), new ItemStack(Item.diamond, 2 + this.rand.nextInt(3))));
-         }
-         if (this.rand.nextFloat() < this.adjustProbability(0.2F)) {
-            var2.add(new MerchantRecipe(new ItemStack(Items.VIBRANIUM_INGOT, 1), new ItemStack(Item.diamond, 10 + this.rand.nextInt(6))));
-         }
+            if (this.rand.nextFloat() < this.adjustProbability(0.7F)) {
+               int nums = 8 + this.rand.nextInt(5);
+               if(nums > 8) {
+                  var2.add(new MerchantRecipe(new ItemStack(Item.ingotGold, 8), new ItemStack(Item.ingotGold, nums - 8), new ItemStack(Item.emerald, 1)));
+               } else {
+                  var2.add(new MerchantRecipe(new ItemStack(Item.ingotGold, nums), new ItemStack(Item.emerald, 1)));
+               }
+            }
+            if (this.rand.nextFloat() < this.adjustProbability(0.6F)) {
+               var2.add(new MerchantRecipe(new ItemStack(Item.ingotIron, 5 + this.rand.nextInt(4)), new ItemStack(Item.emerald, 1)));
+            }
+            if (this.rand.nextFloat() < this.adjustProbability(0.5F)) {
+               var2.add(new MerchantRecipe(new ItemStack(Item.ingotAncientMetal, 3 + this.rand.nextInt(3)), new ItemStack(Item.diamond, 1)));
+            }
+            if (this.rand.nextFloat() < this.adjustProbability(0.4F)) {
+               var2.add(new MerchantRecipe(new ItemStack(Item.ingotMithril, 1 + this.rand.nextInt(2)), new ItemStack(Item.diamond, 1)));
+            }
+            if (this.rand.nextFloat() < this.adjustProbability(0.3F)) {
+               var2.add(new MerchantRecipe(new ItemStack(Item.ingotAdamantium, 1), new ItemStack(Item.diamond, 2 + this.rand.nextInt(3))));
+            }
+            if (this.rand.nextFloat() < this.adjustProbability(0.2F)) {
+               var2.add(new MerchantRecipe(new ItemStack(Items.VIBRANIUM_INGOT, 1), new ItemStack(Item.diamond, 10 + this.rand.nextInt(6))));
+            }
 //         addBlacksmithItem(var2, Item.swordIron.itemID, this.rand, this.adjustProbability(0.5F));
 //         addBlacksmithItem(var2, Item.axeIron.itemID, this.rand, this.adjustProbability(0.3F));
 //         addBlacksmithItem(var2, Item.pickaxeIron.itemID, this.rand, this.adjustProbability(0.5F));
@@ -315,20 +322,20 @@ public abstract class EntityVillagerTrans extends EntityAgeable implements IMerc
 //         addBlacksmithItem(var2, Item.plateChainIron.itemID, this.rand, this.adjustProbability(0.1F));
 //         addBlacksmithItem(var2, Item.legsChainIron.itemID, this.rand, this.adjustProbability(0.1F));
 //         addBlacksmithItem(var2, Item.bootsChainIron.itemID, this.rand, this.adjustProbability(0.1F));
-         break;
-      case 4:
-         addMerchantItem(var2, Item.coal.itemID, this.rand, this.adjustProbability(0.7F));
-         addMerchantItem(var2, Item.porkRaw.itemID, this.rand, this.adjustProbability(0.5F));
-         addMerchantItem(var2, Item.beefRaw.itemID, this.rand, this.adjustProbability(0.5F));
-         addMerchantItem(var2, Item.lambchopRaw.itemID, this.rand, this.adjustProbability(0.5F));
-         addBlacksmithItem(var2, Item.saddle.itemID, this.rand, this.adjustProbability(0.1F));
-         addBlacksmithItem(var2, Item.plateLeather.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.bootsLeather.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.helmetLeather.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.legsLeather.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.porkCooked.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.beefCooked.itemID, this.rand, this.adjustProbability(0.3F));
-         addBlacksmithItem(var2, Item.lambchopCooked.itemID, this.rand, this.adjustProbability(0.3F));
+            break;
+         case 4:
+            addMerchantItem(var2, Item.coal.itemID, this.rand, this.adjustProbability(0.7F));
+            addMerchantItem(var2, Item.porkRaw.itemID, this.rand, this.adjustProbability(0.5F));
+            addMerchantItem(var2, Item.beefRaw.itemID, this.rand, this.adjustProbability(0.5F));
+            addMerchantItem(var2, Item.lambchopRaw.itemID, this.rand, this.adjustProbability(0.5F));
+            addBlacksmithItem(var2, Item.saddle.itemID, this.rand, this.adjustProbability(0.1F));
+            addBlacksmithItem(var2, Item.plateLeather.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.bootsLeather.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.helmetLeather.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.legsLeather.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.porkCooked.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.beefCooked.itemID, this.rand, this.adjustProbability(0.3F));
+            addBlacksmithItem(var2, Item.lambchopCooked.itemID, this.rand, this.adjustProbability(0.3F));
       }
 
       if (var2.isEmpty()) {

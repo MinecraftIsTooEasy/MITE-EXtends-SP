@@ -4,9 +4,10 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.*;
 import net.xiaoyu233.mitemod.miteite.item.ArmorModifierTypes;
+import net.xiaoyu233.mitemod.miteite.item.GemModifierTypes;
+import net.xiaoyu233.mitemod.miteite.item.ItemEnhanceGem;
 import net.xiaoyu233.mitemod.miteite.item.ToolModifierTypes;
 import net.xiaoyu233.mitemod.miteite.util.Constant;
-import net.xiaoyu233.mitemod.miteite.util.EnumChatFormats;
 import net.xiaoyu233.mitemod.miteite.util.ReflectHelper;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -59,6 +60,71 @@ public class ItemStackTrans {
          callbackInfoReturnable.cancel();
       }
    }
+
+   @Inject(method = "splitStack", at = @At("RETURN"), cancellable = true)
+   public void splitStack(CallbackInfoReturnable<ItemStack>callbackInfoReturnable) {
+      ItemStack itemStack = callbackInfoReturnable.getReturnValue();
+      callbackInfoReturnable.setReturnValue(itemStack);
+      callbackInfoReturnable.cancel();
+   }
+
+
+   public float getGemMaxNumeric(GemModifierTypes gemModifierTypes) {
+      return (float) this.getGemMaxLevel(gemModifierTypes) * gemModifierTypes.getRate();
+   }
+
+
+
+   public int getGemMaxLevel(GemModifierTypes gemModifierTypes) {
+      // 在宝石里面寻找最大的
+      int max = 0;
+      if(this.stackTagCompound != null && this.stackTagCompound.hasKey("Gems")) {
+         NBTTagList nbtTagList = this.stackTagCompound.getTagList("Gems");
+         for (int i = 0; i < nbtTagList.tagCount(); i++) {
+            NBTTagCompound nbtTagCompound = (NBTTagCompound) nbtTagList.tagAt(i);
+            if (nbtTagCompound.getShort("id") >= 0 && nbtTagCompound.getByte("meta") >= 0) {
+               Item item = Item.getItem(nbtTagCompound.getShort("id"));
+               if (item instanceof ItemEnhanceGem) {
+                  if (nbtTagCompound.getByte("meta") == gemModifierTypes.ordinal()) {
+                     int level = ((ItemEnhanceGem) item).gemLevel;
+                     if (level > max) {
+                        max = level;
+                     }
+                  }
+               }
+            }
+         }
+      }
+      return max;
+   }
+
+
+   public void setGem(ItemStack gemStack, int index)
+   {
+      if (this.stackTagCompound == null)
+      {
+         this.setTagCompound(new NBTTagCompound());
+      }
+      if(!this.stackTagCompound.hasKey("Gems")){
+         NBTTagList nbtTagList =  new NBTTagList("Gems");
+
+         for (int i = 0; i < 8; i++) {
+            NBTTagCompound var4  = new NBTTagCompound();
+            var4.setShort("id", (short)-1);
+            var4.setByte("meta", (byte)-1);
+            nbtTagList.appendTag(var4);
+         }
+         this.stackTagCompound.setTag("Gems", nbtTagList);
+      }
+      NBTTagList nbtTagList =  this.stackTagCompound.getTagList("Gems");
+      NBTTagCompound nbtTagCompound = (NBTTagCompound)nbtTagList.tagAt(index);
+
+      nbtTagCompound.setShort("id", gemStack != null ? (short)gemStack.getItem().itemID : (short) -1);
+      nbtTagCompound.setByte("meta",gemStack != null? (byte)gemStack.getItemSubtype() : (byte) -1);
+   }
+
+
+
    @Overwrite
    public List getTooltip(EntityPlayer par1EntityPlayer, boolean par2, Slot slot) {
       ArrayList var3 = new ArrayList();
@@ -167,17 +233,16 @@ public class ItemStackTrans {
 
       if (par2 && item1.hasSoldPrice()) {
          var3.add("");
-         var3.add(EnumChatFormats.DARK_RED + Translator.get("item.tooltip.soldprice") + ": " + item1.getSoldPrice());
+         var3.add(EnumChatFormat.DARK_RED + Translator.get("item.tooltip.soldprice") + ": " + item1.getSoldPrice());
       }
 
       if (par2 && item1.hasPrice()) {
-         var3.add(EnumChatFormats.DARK_GREEN + Translator.get("item.tooltip.price") + ": " + item1.getPrice());
+         var3.add(EnumChatFormat.DARK_GREEN + Translator.get("item.tooltip.price") + ": " + item1.getPrice());
          if (item1.getHasSubtypes()){
             var3.add(Translator.get("item.tooltip.ID") + ": " + item1.itemID +"/"+ Translator.get("item.tooltip.SUB") + ": " + item1.getNumSubtypes());
          } else{
             var3.add(Translator.get("item.tooltip.ID") + ": " + item1.itemID);
          }
-
       }
 
       if (par2 && this.getQuality() != null) {
@@ -248,7 +313,7 @@ public class ItemStackTrans {
             required_heat_level = TileEntityFurnace.getHeatLevelRequired(this.itemID);
             hypothetical_level = tile_entity_furnace.heat_level > 0 ? tile_entity_furnace.heat_level : tile_entity_furnace.getFuelHeatLevel();
             if (hypothetical_level > 0 && hypothetical_level < required_heat_level) {
-               var3.add(EnumChatFormats.GOLD + Translator.get("container.furnace.needsMoreHeat"));
+               var3.add(EnumChatFormat.YELLOW + Translator.get("container.furnace.needsMoreHeat"));
             }
          }
       }
@@ -448,7 +513,7 @@ public class ItemStackTrans {
 
    @Overwrite
    public float getMeleeDamageBonus() {
-      return this.getItem().getMeleeDamageBonus(ReflectHelper.dyCast(this));
+      return this.getItem().getMeleeDamageBonus(ReflectHelper.dyCast(this)) + this.getGemMaxNumeric(GemModifierTypes.damage);
    }
 
    @Shadow
@@ -658,6 +723,7 @@ public class ItemStackTrans {
       if (this.is_artifact) {
          par1NBTTagCompound.setBoolean("is_artifact", this.is_artifact);
       }
+
 
       return par1NBTTagCompound;
    }

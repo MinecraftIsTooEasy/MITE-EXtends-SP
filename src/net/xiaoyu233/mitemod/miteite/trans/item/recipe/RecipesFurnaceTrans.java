@@ -1,7 +1,9 @@
 package net.xiaoyu233.mitemod.miteite.trans.item.recipe;
 
-import net.minecraft.*;
-import net.xiaoyu233.mitemod.miteite.util.Configs;
+import net.minecraft.Block;
+import net.minecraft.ItemStack;
+import net.minecraft.RecipesFurnace;
+import net.minecraft.TileEntityFurnace;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
@@ -28,11 +30,14 @@ public class RecipesFurnaceTrans {
             ItemStack result_item_stack;
             if (input_item_id == Block.sand.blockID) {
                result_item_stack = (heat_level != 1 || input_item_stack.stackSize >= 4) && input_item_stack.stackSize >= 4 ? new ItemStack(heat_level == 1 ? Block.sandStone : Block.glass) : null;
-            } else if (input_item_id == Block.blockIron.blockID) {
-               result_item_stack = heat_level >= 3 && input_item_stack.stackSize >= Configs.wenscConfig.ironBlockCountToMithril.ConfigValue ? new ItemStack(Item.ingotMithril) : null;
-            } else if (input_item_id == Block.blockMithril.blockID) {
-               result_item_stack = heat_level >= 4 && input_item_stack.stackSize >= Configs.wenscConfig.mithrilBlockCountToAdamantium.ConfigValue ? new ItemStack(Item.ingotAdamantium) : null;
-            } else {
+            }
+//            else if (input_item_id == Block.blockIron.blockID) {
+//               result_item_stack = heat_level >= 3 ? (ItemStack)this.smeltingList.get(input_item_id) : null;
+////                       && input_item_stack.stackSize >= Configs.wenscConfig.ironBlockCountToMithril.ConfigValue ? new ItemStack(Item.ingotMithril) : null;
+//            } else if (input_item_id == Block.blockMithril.blockID) {
+//               result_item_stack = heat_level >= 4 && input_item_stack.stackSize >= Configs.wenscConfig.mithrilBlockCountToAdamantium.ConfigValue ? new ItemStack(Item.ingotAdamantium) : null;
+//            }
+            else {
                result_item_stack = (ItemStack)this.smeltingList.get(input_item_id);
             }
 

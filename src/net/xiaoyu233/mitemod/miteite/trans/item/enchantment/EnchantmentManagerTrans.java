@@ -99,8 +99,7 @@ public class EnchantmentManagerTrans {
          Enchantment enchantment = Enchantment.get(i);
          if (enchantment != null && (is_book || enchantment.canEnchantItem(item)) && !enchantment.enchantIndividually()) {
             if (enchantment.hasLevels()) {
-               for(int level =
-                   is_enhance ? enchantment.getNumLevelsForVibranium() : enchantment.getNumLevels(); level > 0; --level) {
+               for(int level = is_enhance ? enchantment.getNumLevelsForVibranium() : enchantment.getNumLevels(); level > 0; --level) {
                   if (enchantment.getMinEnchantmentLevelsCost(level) <= enchantment_levels) {
                      map.put(enchantment.effectId, new EnchantmentInstance(enchantment, level));
                      break;

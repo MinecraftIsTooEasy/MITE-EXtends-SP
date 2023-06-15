@@ -337,9 +337,6 @@ public class EntitySkeletonTrans extends EntityMonster implements IRangedEntity 
             this.tasks.addTask(4, this.aiArrowAttack);
             this.dataWatcher.updateObject(this.DATA_OBJ_ID_CAN_USE_FIRE_ARROW, (byte)(this.rand.nextInt(10) > 5 ? 1 : 0));
             this.dataWatcher.updateObject(this.DATA_OBJ_ID_CAN_USE_TRIPLE_ARROW, (byte)(this.rand.nextInt(100) > 85 ? 1 : 0));
-            if(this.rand.nextInt(8)==0){
-               this.tasks.addTask(3, new PathfinderGoalAvoidPlayer(this, EntityPlayer.class, 12.0F, 1.1, 1.4));
-            }
          } else {
             Minecraft.setErrorMessage("onSpawnWithEgg: Unrecognized skeleton type " + skeleton_type);
          }
@@ -357,6 +354,23 @@ public class EntitySkeletonTrans extends EntityMonster implements IRangedEntity 
       }
 
       this.setCombatTask();
+
+      if(rand.nextInt(5) == 0) {
+         EntityBat entityBat;
+         // 近战骷髅
+         if(this.getSkeletonType() > 0) {
+            entityBat = new EntityVampireBat(this.worldObj);
+         } else {
+            entityBat = new EntityBat(this.worldObj);
+         }
+         entityBat.setPosition(this.posX, this.posY, this.posZ);
+         this.worldObj.spawnEntityInWorld(entityBat);
+         entityBat.onSpawnWithEgg(null);
+         entityBat.setAttackTarget(this.getTarget());
+         entityBat.entityFX(EnumEntityFX.summoned);
+         this.mountEntity(entityBat);
+      }
+
       return par1EntityLivingData;
    }
 
