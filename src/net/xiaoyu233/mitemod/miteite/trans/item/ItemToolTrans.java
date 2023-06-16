@@ -41,11 +41,11 @@ public class ItemToolTrans extends Item implements IUpgradableItem {
          this.expForLevel = this.createExpForLevel(128,32);
       } else if (material == Material.mithril) {
          this.expForLevel = this.createExpForLevel(192,48);
-      }else if (material == Material.adamantium){
+      }else if (material == Material.adamantium || material == Materials.enchant){
          this.expForLevel = this.createExpForLevel(256,64);
       }else if (material == Materials.vibranium){
          this.expForLevel = this.createExpForLevel(384,96);
-      }else {
+      } else {
          this.expForLevel = this.createExpForLevel(128,32);
       }
    }

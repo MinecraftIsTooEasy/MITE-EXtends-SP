@@ -11,7 +11,7 @@ public class EnchantmentVampiricTrans {
     public boolean canEnchantItem(Item item) {
         if (item instanceof ItemTool) {
             Material material = ((ItemTool)item).getToolMaterial();
-            if (material != Materials.vibranium) {
+            if (material != Materials.vibranium || material != Materials.infinity) {
                 return false;
             }
         }

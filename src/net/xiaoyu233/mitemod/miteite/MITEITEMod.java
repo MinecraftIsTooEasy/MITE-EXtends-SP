@@ -27,7 +27,7 @@ public class MITEITEMod extends AbstractMod {
     public void preInit() {
 
     }
-    public static void checkUpdateVer(EntityPlayer player){
+    public static void checkUpdateVer(EntityPlayer player)  {
         String webVersion = HttpUtilities.performGetRequest("https://lucklong.cn/ExtendVer.txt", 3000, 3000);
         if (webVersion == null){
             player.sendChatToPlayer(ChatMessage.createFromText("[MITE-EXtends]:").setColor(EnumChatFormat.WHITE)

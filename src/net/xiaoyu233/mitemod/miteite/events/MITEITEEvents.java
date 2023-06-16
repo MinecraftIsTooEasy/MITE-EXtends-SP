@@ -376,6 +376,11 @@ public class MITEITEEvents {
             event.setExecuteSuccess(true);
         }
 
+        if (par2Str.startsWith("check")) {
+            MITEITEMod.checkUpdateVer(player);
+            event.setExecuteSuccess(true);
+        }
+
     }
 
     @Subscribe
@@ -438,7 +443,7 @@ public class MITEITEEvents {
                 .appendComponent(ChatMessage.createFromTranslationKey("MITE-EXtends-SP-" + Constant.MITE_ITE_VERSION +" 由 ")
                         .appendComponent(ChatMessage.createFromTranslationKey("lee、whscqngsd、rizur、NoRegrets/Huix").setColor(EnumChatFormat.WHITE)))
                 .addText(" 重写自wensc的MITE-extreme").setColor(EnumChatFormat.DARK_AQUA));
-        MITEITEMod.checkUpdateVer(par1EntityPlayerMP);
+        //MITEITEMod.checkUpdateVer(par1EntityPlayerMP);
         par1EntityPlayerMP.sendChatToPlayer(ChatMessage.createFromTranslationKey("[MITE-EXtends-SP]:")
                 .appendComponent(ChatMessage.createFromTranslationKey("企鹅交流群:  661223990").setColor(EnumChatFormat.WHITE)));
         if (par1EntityPlayerMP.isFirstLogin) {

@@ -71,8 +71,6 @@ public class Items extends Item{
     public static final Item infinityingot = ReflectHelper.createInstance(ItemIngot.class, new Class[]{Integer.TYPE, Material.class}, Constant.getNextItemID(), Materials.infinity);
     public static final ItemCoin coinVibranium = ReflectHelper.createInstance(ItemCoin.class, new Class[]{Integer.TYPE, Material.class}, Constant.getNextItemID(), Materials.vibranium);
     public static final Item doorVibranium = new ItemDoor(Constant.getNextItemID(), Materials.vibranium);
-    //public static final ItemMonsterEgg doorVibranium1 = new ItemDoor(Constant.getNextItemID(), Materials.vibranium);
-   // public static final Item itemPadding = new ItemPadding(Constant.getNextItemID());
     public static final Item fishRodVibranium = new ItemFishingRod(Constant.getNextItemID(), Materials.vibranium);
     public static final ItemArmor unassailableChestPlate = new ItemCuirass(Constant.getNextItemID(), Materials.infinity, false);
     public static final Item clubCopper = new ItemClubMetal(Constant.getNextItemID(), Material.copper);
@@ -83,7 +81,6 @@ public class Items extends Item{
     public static final ItemSword enchantSword = createInstance(ItemSword.class,new Class[]{int.class,Material.class},Constant.getNextItemID(), Materials.enchant);
     public static final Item enchantStick = createInstance(Item.class,new Class[]{int.class,Material.class,String.class},Constant.getNextItemID(), Materials.enchant, "enchant_stick");
     public static final Item enchantSRC = createInstance(Item.class,new Class[]{int.class,Material.class,String.class},Constant.getNextItemID(), Materials.enchant, "enchant_src").setXPReward(80);
-
     public static final Item itemDynamicCoreIron = new ItemDynamicCore(Constant.getNextItemID(), Materials.iron, 1).setUnlocalizedName("dynamic_core_iron");
     public static final Item itemDynamicCoreAncient_metal = new ItemDynamicCore(Constant.getNextItemID(), Materials.ancient_metal, 2).setUnlocalizedName("dynamic_core_ancient_metal");
     public static final Item itemDynamicCoreMithril = new ItemDynamicCore(Constant.getNextItemID(), Materials.mithril, 3).setUnlocalizedName("dynamic_core_mithril");
@@ -97,8 +94,6 @@ public class Items extends Item{
     public static ItemEnhanceGem itemEnhanceGem6 = (ItemEnhanceGem)(new ItemEnhanceGem(Constant.getNextItemID(), 6)).setUnlocalizedName("enhance_gem_phase6");
     public static ItemEnhanceGemBox itemEnhanceGemBox = (ItemEnhanceGemBox)(new ItemEnhanceGemBox(Constant.getNextItemID())).setUnlocalizedName("enhance_gem_box_phase1");
     public static ItemGemShard itemGemShard = (ItemGemShard)(new ItemGemShard(Constant.getNextItemID())).setUnlocalizedName("gem_shard");public static final Item fancyRed = (new ItemFancyRed(Constant.getNextItemID(), Material.diamond, "fancy_red"));
-
-
 
 
     private static Item register(String resourceLocation, Item item, CreativeModeTab tab) {
@@ -342,11 +337,11 @@ public class Items extends Item{
             register.registerShapedRecipe(new ItemStack(ringKillerMithril, 1), true, new Object[]{"###", "#*#","###", '#', Items.swordMithril , '*', Items.ringKillerAncient});
             register.registerShapedRecipe(new ItemStack(ringKillerAdamantium, 1), true, new Object[]{"###", "#*#","###", '#', Items.swordAdamantium , '*', Items.ringKillerMithril});
             register.registerShapedRecipe(new ItemStack(ringKillerVibranium, 1), true, new Object[]{"###", "#*#","###", '#', VIBRANIUM_SWORD , '*', Items.ringKillerAdamantium});
-            register.registerShapedRecipe(new ItemStack(ringKillerInfinity, 1), true, new Object[]{"###", "#*#","###", '#', infinitySword, '*', Items.ringKillerVibranium});
+            register.registerShapedRecipe(new ItemStack(ringKillerInfinity, 1), true, "###", "#*#","###", '#', infinitySword, '*', Items.ringKillerVibranium);
         }
 
 
-        register.registerShapelessRecipe(new ItemStack(endBook), true, new Object[]{Block.enderChest, Item.book});
+        register.registerShapelessRecipe(new ItemStack(endBook), true, Block.enderChest, Item.book);
         register.registerShapedRecipe(new ItemStack(infinitySword), true,
                 " D ", " D ", " E ",
                         'E', enchantStick, 'D', infinityingot);
